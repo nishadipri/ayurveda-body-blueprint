@@ -1,4 +1,3 @@
-
 export interface Question {
   id: number;
   text: string;
@@ -136,6 +135,86 @@ export const doshaQuestions: Question[] = [
       kapha: "I prefer stability and routine, change can be difficult"
     },
     category: "behavioral"
+  },
+  {
+    id: 13,
+    text: "How do you typically respond to new situations?",
+    options: {
+      vata: "I get excited and enthusiastic, but may feel anxious",
+      pitta: "I assess the situation and quickly develop a strategy",
+      kapha: "I prefer to observe first and adapt slowly to changes"
+    },
+    category: "behavioral"
+  },
+  {
+    id: 14,
+    text: "Which describes your communication style?",
+    options: {
+      vata: "Quick, animated, sometimes jumping between topics",
+      pitta: "Clear, direct, concise, and to the point",
+      kapha: "Thoughtful, measured, and sometimes slow to respond"
+    },
+    category: "behavioral"
+  },
+  {
+    id: 15,
+    text: "How would you describe your emotional patterns?",
+    options: {
+      vata: "I feel emotions intensely but they change quickly",
+      pitta: "I have strong emotions, particularly around issues of fairness or achievement",
+      kapha: "My emotions are steady and it takes a lot to upset my equilibrium"
+    },
+    category: "mental"
+  },
+  {
+    id: 16,
+    text: "How is your persistence and follow-through?",
+    options: {
+      vata: "I start projects enthusiastically but sometimes struggle to finish them",
+      pitta: "I set goals and work diligently until I achieve them",
+      kapha: "Once I commit to something, I steadily work until completion"
+    },
+    category: "behavioral"
+  },
+  {
+    id: 17,
+    text: "What is your typical bowel movement pattern?",
+    options: {
+      vata: "Irregular, tends toward constipation or dry stools",
+      pitta: "Regular, soft but formed stools, may tend toward loose",
+      kapha: "Slow, regular, well-formed stools"
+    },
+    category: "physical"
+  },
+  {
+    id: 18,
+    text: "How do you handle financial matters?",
+    options: {
+      vata: "I tend to spend impulsively and may not always keep track",
+      pitta: "I'm organized and strategic with money, often saving for specific goals",
+      kapha: "I'm cautious with spending and prefer saving for security"
+    },
+    category: "behavioral"
+  },
+  {
+    id: 19,
+    text: "Which best describes your joints?",
+    options: {
+      vata: "My joints are thin, sometimes crack or feel stiff",
+      pitta: "My joints are of medium size and moderately flexible",
+      kapha: "My joints are large, well-lubricated, and stable"
+    },
+    category: "physical"
+  },
+  {
+    id: 20,
+    text: "How do you approach learning new information?",
+    options: {
+      vata: "I grasp concepts quickly but may forget details later",
+      pitta: "I focus intensely and learn systematically through analysis",
+      kapha: "I learn slowly but retain information well once learned"
+    },
+    category: "mental"
   }
 ];
 

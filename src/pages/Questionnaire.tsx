@@ -16,7 +16,7 @@ const Questionnaire = () => {
                 Discover Your Ayurvedic Constitution
               </h1>
               <p className="text-lg text-ayurveda-forest/80 max-w-2xl mx-auto">
-                Answer the following questions honestly based on your natural tendencies throughout your life, not just your current state. This will help determine your unique Ayur Glow body blueprint.
+                Answer the following 20 questions honestly based on your natural tendencies throughout your life, not just your current state. This will help determine your unique Ayur Glow body blueprint.
               </p>
             </div>
             
