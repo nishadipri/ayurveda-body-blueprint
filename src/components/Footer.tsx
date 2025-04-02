@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-lora text-xl font-semibold mb-4 text-ayurveda-forest">Ayurveda Blueprint</h3>
+            <h3 className="font-lora text-xl font-semibold mb-4 text-ayurveda-forest">Ayur Glow</h3>
             <p className="text-ayurveda-forest/80 mb-4">
               Discover your unique Ayurvedic constitution and receive personalized wellness recommendations.
             </p>
@@ -50,7 +50,7 @@ const Footer = () => {
         
         <div className="border-t border-ayurveda-sand/50 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-ayurveda-forest/70 text-sm">
-            © {new Date().getFullYear()} Ayurveda Blueprint. All rights reserved.
+            © {new Date().getFullYear()} Ayur Glow. All rights reserved.
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href="#" className="text-ayurveda-forest/70 hover:text-ayurveda-terra text-sm">Privacy Policy</a>

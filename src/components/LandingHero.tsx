@@ -10,7 +10,7 @@ const LandingHero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-lora font-semibold leading-tight text-ayurveda-forest mb-6">
-              Discover Your Ayurvedic Body Blueprint
+              Discover Your Ayur Glow Body Blueprint
             </h1>
             <p className="text-lg text-ayurveda-forest/80 mb-8 max-w-lg">
               Unlock the ancient wisdom of Ayurveda to understand your unique body constitution and receive personalized wellness recommendations tailored just for you.

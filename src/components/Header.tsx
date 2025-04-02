@@ -15,7 +15,7 @@ const Header = () => {
     <header className="w-full bg-white/90 backdrop-blur-sm border-b border-ayurveda-sand sticky top-0 z-40">
       <div className="container py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-lora text-2xl font-semibold text-ayurveda-forest">Ayurveda Blueprint</span>
+          <span className="font-lora text-2xl font-semibold text-ayurveda-forest">Ayur Glow</span>
         </Link>
         
         {/* Desktop Navigation */}
