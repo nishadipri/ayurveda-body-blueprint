@@ -19,7 +19,7 @@ const EmbedInstructions = () => {
   };
 
   const embedCode = `<iframe 
-  src="https://your-deployed-app-url.com/questionnaire" 
+  src="https://your-deployed-app-url.com/embedded-questionnaire" 
   width="100%" 
   height="800" 
   frameborder="0" 
@@ -96,7 +96,7 @@ const EmbedInstructions = () => {
                   <div className="mt-4 text-sm text-gray-600">
                     <p className="font-medium">Important notes:</p>
                     <ul className="list-disc pl-6 mt-2 space-y-1">
-                      <li>Replace "https://your-deployed-app-url.com/questionnaire" with your actual deployed app URL</li>
+                      <li>Replace "https://your-deployed-app-url.com/embedded-questionnaire" with your actual deployed app URL</li>
                       <li>Adjust the height value if needed to fit your specific page layout</li>
                       <li>Some Squarespace templates may require additional CSS to make the iframe responsive</li>
                     </ul>
@@ -112,7 +112,7 @@ const EmbedInstructions = () => {
                   <p>For better integration with your site:</p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>Consider adding <code className="bg-gray-100 px-2 py-1 rounded">style="border:none"</code> to remove the iframe border</li>
-                    <li>If you want only specific screens of the quiz, you can link directly to them (e.g., "/questionnaire" or "/results")</li>
+                    <li>We've created special embedded versions of the questionnaire without header and footer for seamless integration</li>
                     <li>For responsive height adjustment, consider using a percentage-based height or a JavaScript resize handler</li>
                   </ul>
                 </CardContent>

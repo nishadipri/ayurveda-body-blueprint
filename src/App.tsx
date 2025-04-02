@@ -9,6 +9,8 @@ import Questionnaire from "./pages/Questionnaire";
 import Results from "./pages/Results";
 import EmbedInstructions from "./pages/EmbedInstructions";
 import NotFound from "./pages/NotFound";
+import EmbeddedQuestionnaire from "./pages/EmbeddedQuestionnaire";
+import EmbeddedResults from "./pages/EmbeddedResults";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/questionnaire" element={<Questionnaire />} />
           <Route path="/results" element={<Results />} />
           <Route path="/embed" element={<EmbedInstructions />} />
+          <Route path="/embedded-questionnaire" element={<EmbeddedQuestionnaire />} />
+          <Route path="/embedded-results" element={<EmbeddedResults />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
