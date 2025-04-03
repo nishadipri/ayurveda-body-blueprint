@@ -1,8 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { DoshaScore, calculateDoshaType, doshaDescriptions } from '@/utils/questionnaireData';
@@ -54,7 +53,7 @@ const Results = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+     
       <main className="flex-grow">
         <section className="py-12 md:py-16 bg-ayurveda-sand/30">
           <div className="container">
@@ -156,7 +155,7 @@ const Results = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      
     </div>
   );
 };
