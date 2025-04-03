@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -13,6 +13,10 @@ const QuestionnaireForm = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [formSubmitted, setFormSubmitted] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Determine if we're in embedded mode
+  const isEmbedded = location.pathname.includes('embedded');
   
   const totalQuestions = doshaQuestions.length;
   const progress = Math.round((currentStep / totalQuestions) * 100);
@@ -51,8 +55,9 @@ const QuestionnaireForm = () => {
       }
     });
     
-    // Navigate to results page with scores
-    navigate('/results', { state: { scores } });
+    // Navigate to the appropriate results page based on whether we're in embedded mode
+    const resultsPath = isEmbedded ? '/embedded-results' : '/results';
+    navigate(resultsPath, { state: { scores } });
   };
 
   if (!currentQuestion) {
