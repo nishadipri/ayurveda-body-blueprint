@@ -1,7 +1,6 @@
 
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+
 import LandingHero from '@/components/LandingHero';
 import DoshaCard from '@/components/DoshaCard';
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,7 @@ import { doshaDescriptions } from '@/utils/questionnaireData';
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      
       <main className="flex-grow">
         <LandingHero />
         
@@ -112,7 +111,7 @@ const Index = () => {
           </div>
         </section>
       </main>
-      <Footer />
+     
     </div>
   );
 };
