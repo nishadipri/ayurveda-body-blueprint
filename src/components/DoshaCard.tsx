@@ -13,7 +13,7 @@ export interface DoshaCardProps {
 const DoshaCard = ({ title, subtitle, description, characteristics, color }: DoshaCardProps) => {
   return (
     <Card className={`border-2 ${color} overflow-hidden hover:shadow-lg transition-all duration-300`}>
-      <div className={`h-2 w-full ${color.replace('border', 'bg')}`}></div>
+      
       <CardHeader>
         <CardTitle className="font-lora text-2xl">{title}</CardTitle>
         <CardDescription className="text-base">{subtitle}</CardDescription>
