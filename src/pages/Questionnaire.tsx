@@ -1,12 +1,12 @@
 
 import React from 'react';
-
+import Header from '@/components/Header';
 import QuestionnaireForm from '@/components/QuestionnaireForm';
 
 const Questionnaire = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      
+      <Header />
       <main className="flex-grow questionnaire-container">
         <section className="py-12 md:py-16">
           <div className="container max-w-4xl">
