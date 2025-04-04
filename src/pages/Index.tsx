@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import Header from '@/components/Header';
 import LandingHero from '@/components/LandingHero';
 import DoshaCard from '@/components/DoshaCard';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ import { doshaDescriptions } from '@/utils/questionnaireData';
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      
+      <Header/>
       <main className="flex-grow">
         <LandingHero />
         
@@ -21,7 +21,7 @@ const Index = () => {
                 Understanding Your Ayurvedic Constitution
               </h2>
               <p className="text-lg text-ayurveda-forest/80">
-                In Ayurveda, your constitution (Prakriti) is determined by the balance of three doshas: Vata, Pitta, and Kapha.
+                In Ayurveda, your constitution (Prakrti) is determined by the balance of three doshas: Vata, Pitta, and Kapha.
                 Knowing your dominant dosha helps you make lifestyle choices that maintain balance and promote wellbeing.
               </p>
             </div>

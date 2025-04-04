@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import Header from '@/components/Header';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
@@ -28,7 +28,8 @@ const EmbedInstructions = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-    
+      
+      <Header />
       <main className="flex-grow">
         <section className="py-12 md:py-16 bg-ayurveda-sand/30">
           <div className="container max-w-4xl">
