@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -136,7 +137,7 @@ const EmbeddedResults = () => {
         
         <div className="text-center">
           <p className="mb-6 text-gray-700">
-            Would you like to retake the quiz or explore more about Ayurvedic practices for your constitution?
+            Interested in discovering more about your body type and how you can enhance your well-being? We're here to help with personalized advice on diet and daily routines. Contact us to begin your customized wellness journey today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white" onClick={() => navigate('/embedded-questionnaire')}>

@@ -141,7 +141,7 @@ const Results = () => {
             
             <div className="text-center">
               <p className="mb-6 text-gray-700">
-                Would you like to retake the quiz or explore more about Ayurvedic practices for your constitution?
+                Interested in discovering more about your body type and how you can enhance your well-being? We're here to help with personalized advice on diet and daily routines. Contact us to begin your customized wellness journey today!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="outline" className="border-ayurveda-leaf text-ayurveda-leaf hover:bg-ayurveda-leaf/10">

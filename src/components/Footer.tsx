@@ -13,7 +13,7 @@ const Footer = () => {
               Ayur Glow
             </Link>
             <p className="text-sm mt-2 text-white/80">
-              Discover your Ayurvedic constitution
+              Reclaim balance, Feel grounded, Live in flow
             </p>
           </div>
           
