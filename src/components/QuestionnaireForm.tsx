@@ -11,6 +11,7 @@ import { doshaQuestions, DoshaScore } from '@/utils/questionnaireData';
 const QuestionnaireForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,13 +23,25 @@ const QuestionnaireForm = () => {
   const progress = Math.round((currentStep / totalQuestions) * 100);
   const currentQuestion = doshaQuestions.find(q => q.id === currentStep);
 
-  const handleAnswer = (dosha: string) => {
-    setAnswers(prev => ({ ...prev, [currentStep]: dosha }));
-    
-    if (currentStep < totalQuestions) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      calculateResults();
+  useEffect(() => {
+    // When changing question, set the selected answer based on any previously saved answer
+    setSelectedAnswer(answers[currentStep] || null);
+  }, [currentStep, answers]);
+
+  const handleSelectAnswer = (dosha: string) => {
+    setSelectedAnswer(dosha);
+  };
+
+  const handleNext = () => {
+    // Save the selected answer
+    if (selectedAnswer) {
+      setAnswers(prev => ({ ...prev, [currentStep]: selectedAnswer }));
+      
+      if (currentStep < totalQuestions) {
+        setCurrentStep(currentStep + 1);
+      } else {
+        calculateResults();
+      }
     }
   };
 
@@ -77,21 +90,25 @@ const QuestionnaireForm = () => {
       <Card className="p-6 shadow-md">
         <h3 className="text-xl font-medium mb-6">{currentQuestion.text}</h3>
         
-        <RadioGroup className="space-y-4">
+        <RadioGroup 
+          className="space-y-4" 
+          value={selectedAnswer || undefined}
+          onValueChange={setSelectedAnswer}
+        >
           <div className="flex items-center space-x-3 p-3 rounded-md hover:bg-ayurveda-sand/20 transition-colors cursor-pointer" 
-               onClick={() => handleAnswer('vata')}>
+               onClick={() => handleSelectAnswer('vata')}>
             <RadioGroupItem value="vata" id="vata" />
             <Label htmlFor="vata" className="flex-1 cursor-pointer">{currentQuestion.options.vata}</Label>
           </div>
           
           <div className="flex items-center space-x-3 p-3 rounded-md hover:bg-ayurveda-sand/20 transition-colors cursor-pointer"
-               onClick={() => handleAnswer('pitta')}>
+               onClick={() => handleSelectAnswer('pitta')}>
             <RadioGroupItem value="pitta" id="pitta" />
             <Label htmlFor="pitta" className="flex-1 cursor-pointer">{currentQuestion.options.pitta}</Label>
           </div>
           
           <div className="flex items-center space-x-3 p-3 rounded-md hover:bg-ayurveda-sand/20 transition-colors cursor-pointer"
-               onClick={() => handleAnswer('kapha')}>
+               onClick={() => handleSelectAnswer('kapha')}>
             <RadioGroupItem value="kapha" id="kapha" />
             <Label htmlFor="kapha" className="flex-1 cursor-pointer">{currentQuestion.options.kapha}</Label>
           </div>
@@ -109,8 +126,8 @@ const QuestionnaireForm = () => {
           
           {currentStep < totalQuestions ? (
             <Button 
-              onClick={() => setCurrentStep(currentStep + 1)}
-              disabled={!answers[currentStep]}
+              onClick={handleNext}
+              disabled={!selectedAnswer}
               className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white"
             >
               Next
@@ -118,7 +135,7 @@ const QuestionnaireForm = () => {
           ) : (
             <Button 
               onClick={calculateResults}
-              disabled={!answers[currentStep] || formSubmitted}
+              disabled={!selectedAnswer || formSubmitted}
               className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white"
             >
               See Results
