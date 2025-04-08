@@ -54,17 +54,14 @@ const Footer = () => {
                   strokeWidth="2" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
-                  className="lucide lucide-music"
                 >
-                  <path d="M9 18V5l12-2v13" />
-                  <circle cx="6" cy="18" r="3" />
-                  <circle cx="18" cy="16" r="3" />
+                  <path d="M9 12.5v5a2.5 2.5 0 0 1-5 0v-7.5a5 5 0 0 1 10 0v1.5a1 1 0 0 0 2 0V6a3 3 0 0 1 6 0v9.5a5.5 5.5 0 0 1-11 0V12"/>
                 </svg>
               </a>
             </div>
             <div className="flex items-center text-sm">
               <Phone size={16} className="mr-2" />
-              <span>Contact us</span>
+              <span>+45 22227553</span>
             </div>
             <p className="text-sm mt-2 text-white/80">Website: Coming soon</p>
           </div>
