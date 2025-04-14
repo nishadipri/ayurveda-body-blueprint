@@ -18,203 +18,203 @@ export interface DoshaScore {
 export const doshaQuestions: Question[] = [
   {
     id: 1,
-    text: "How would you describe your frame and body build?",
+    text: "How would you describe your physical frame?",
     options: {
-      vata: "Thin, lean, I find it difficult to gain weight",
-      pitta: "Medium, athletic build with moderate muscle development",
-      kapha: "Solid, sturdy build, I gain weight easily and lose it slowly"
+      vata: "Small and thin-boned with prominent joints",
+      pitta: "Medium, symmetrical build with good muscle tone",
+      kapha: "Large, well-developed frame with sturdy bones"
     },
     category: "physical"
   },
   {
     id: 2,
-    text: "Which best describes your skin?",
+    text: "What best describes your skin?",
     options: {
-      vata: "Dry, rough, or thin skin that tends to get flaky",
-      pitta: "Fair, sensitive skin that flushes easily or gets rashes",
-      kapha: "Thick, oily, smooth and cool to the touch"
+      vata: "Dry, thin, and cool to touch",
+      pitta: "Warm, reddish, sensitive with freckles or moles",
+      kapha: "Thick, smooth, and naturally moist"
     },
     category: "physical"
   },
   {
     id: 3,
-    text: "How would you describe your hair?",
+    text: "Which best describes your hair characteristics?",
     options: {
-      vata: "Dry, frizzy, or brittle",
-      pitta: "Fine, early graying, or tends to thin out",
-      kapha: "Thick, wavy, oily, and lustrous"
+      vata: "Dry, rough, or curly",
+      pitta: "Fine, straight, early graying",
+      kapha: "Thick, wavy, and luxuriant"
     },
     category: "physical"
   },
   {
     id: 4,
-    text: "Which describes your appetite?",
+    text: "How would you describe your eyes?",
     options: {
-      vata: "Variable, I sometimes forget to eat or can skip meals",
-      pitta: "Strong, I get irritable if I miss a meal",
-      kapha: "Steady but can easily skip meals without much discomfort"
+      vata: "Small, active, darting eyes that are often dry",
+      pitta: "Medium-sized, sharp, penetrating gaze",
+      kapha: "Large, attractive eyes with thick lashes"
     },
     category: "physical"
   },
   {
     id: 5,
-    text: "How do you respond to weather changes?",
+    text: "What are your sleep patterns like?",
     options: {
-      vata: "I dislike cold, windy weather and prefer warmth",
-      pitta: "I dislike hot, humid conditions and prefer cooler environments",
-      kapha: "I dislike cold, damp conditions but don't mind heat"
+      vata: "Light sleeper, tends to wake up easily",
+      pitta: "Moderate sleep, but sharp and quick to wake",
+      kapha: "Deep, long sleeper, slow to wake up"
     },
     category: "physical"
   },
   {
     id: 6,
-    text: "How would you describe your sleep pattern?",
+    text: "How do you typically walk?",
     options: {
-      vata: "Light sleeper, tend to wake up easily, or have insomnia",
-      pitta: "Moderate sleep needs, sleep is usually sound but can be disturbed",
-      kapha: "Heavy sleeper, tend to sleep long and deeply"
+      vata: "Quick, light steps with a variable pace",
+      pitta: "Determined, purposeful stride",
+      kapha: "Slow, steady, graceful gait"
     },
-    category: "physical"
+    category: "behavioral"
   },
   {
     id: 7,
-    text: "Which best describes your speaking style?",
+    text: "How would you describe your voice?",
     options: {
-      vata: "Fast, enthusiastic, sometimes I jump between topics",
-      pitta: "Clear, precise, convincing and articulate",
-      kapha: "Slow, methodical, thoughtful, sometimes I need time to respond"
+      vata: "Low volume, fast-talking, tends to ramble",
+      pitta: "Sharp, clear, persuasive speech",
+      kapha: "Deep, melodious voice, speaks slowly"
     },
     category: "behavioral"
   },
   {
     id: 8,
-    text: "How do you typically respond to stress?",
+    text: "What is your typical response to stress?",
     options: {
-      vata: "I get anxious, worried, or overwhelmed",
-      pitta: "I become irritable, intense, or critical",
-      kapha: "I withdraw, become quiet, or avoid dealing with the situation"
+      vata: "Anxious, worried, and overwhelmed",
+      pitta: "Irritable, intense, and argumentative",
+      kapha: "Calm, withdrawn, seeks comfort"
     },
     category: "mental"
   },
   {
     id: 9,
-    text: "How would you describe your memory?",
+    text: "How do you handle finances?",
     options: {
-      vata: "Quick to learn but also quick to forget",
-      pitta: "Sharp, focused, and generally reliable",
-      kapha: "Slow to learn but excellent long-term retention"
+      vata: "Impulsive spender, variable habits",
+      pitta: "Calculated spender, good planning",
+      kapha: "Conservative, saves money well"
     },
-    category: "mental"
+    category: "behavioral"
   },
   {
     id: 10,
-    text: "What's your usual energy pattern throughout the day?",
+    text: "What's your characteristic body temperature?",
     options: {
-      vata: "Variable energy with bursts of activity followed by fatigue",
-      pitta: "Strong, purposeful energy, particularly around midday",
-      kapha: "Steady, sustained energy but can feel sluggish in the morning"
+      vata: "Often feels cold, poor circulation",
+      pitta: "Feels warm, doesn't like hot weather",
+      kapha: "Moderate, adapts well to most temperatures"
     },
     category: "physical"
   },
   {
     id: 11,
-    text: "How would you describe your approach to work or projects?",
+    text: "How is your memory?",
     options: {
-      vata: "Creative, enthusiastic initially but may lose interest",
-      pitta: "Focused, organized, efficient, and goal-oriented",
-      kapha: "Methodical, steady, thorough, and reliable"
+      vata: "Learns quickly but forgets quickly",
+      pitta: "Sharp, clear memory with good retention",
+      kapha: "Slow to learn but never forgets"
     },
-    category: "behavioral"
+    category: "mental"
   },
   {
     id: 12,
-    text: "How adaptable are you to change?",
+    text: "What's your emotional tendency?",
     options: {
-      vata: "I change quickly and easily, sometimes too much",
-      pitta: "I can adapt when necessary but prefer to be in control",
-      kapha: "I prefer stability and routine, change can be difficult"
+      vata: "Easily excited, quick mood changes",
+      pitta: "Intense emotions, particularly around achievement",
+      kapha: "Steady, calm, slow to anger"
     },
-    category: "behavioral"
+    category: "mental"
   },
   {
     id: 13,
-    text: "How do you typically respond to new situations?",
+    text: "How's your digestion?",
     options: {
-      vata: "I get excited and enthusiastic, but may feel anxious",
-      pitta: "I assess the situation and quickly develop a strategy",
-      kapha: "I prefer to observe first and adapt slowly to changes"
+      vata: "Irregular, tends to bloat easily",
+      pitta: "Strong, gets hungry quickly",
+      kapha: "Slow but steady digestion"
     },
-    category: "behavioral"
+    category: "physical"
   },
   {
     id: 14,
-    text: "Which describes your communication style?",
+    text: "What about your eating habits?",
     options: {
-      vata: "Quick, animated, sometimes jumping between topics",
-      pitta: "Clear, direct, concise, and to the point",
-      kapha: "Thoughtful, measured, and sometimes slow to respond"
+      vata: "Irregular eating patterns, variable appetite",
+      pitta: "Regular meals, strong appetite",
+      kapha: "Can skip meals easily, steady appetite"
     },
     category: "behavioral"
   },
   {
     id: 15,
-    text: "How would you describe your emotional patterns?",
+    text: "How do you approach work?",
     options: {
-      vata: "I feel emotions intensely but they change quickly",
-      pitta: "I have strong emotions, particularly around issues of fairness or achievement",
-      kapha: "My emotions are steady and it takes a lot to upset my equilibrium"
+      vata: "Creative but easily distracted",
+      pitta: "Focused, organized, and efficient",
+      kapha: "Methodical, steady, thorough"
     },
-    category: "mental"
+    category: "behavioral"
   },
   {
     id: 16,
-    text: "How is your persistence and follow-through?",
+    text: "What's your energy level like?",
     options: {
-      vata: "I start projects enthusiastically but sometimes struggle to finish them",
-      pitta: "I set goals and work diligently until I achieve them",
-      kapha: "Once I commit to something, I steadily work until completion"
+      vata: "Bursts of energy followed by exhaustion",
+      pitta: "Strong but measured energy throughout the day",
+      kapha: "Steady energy, but slow to get started"
     },
-    category: "behavioral"
+    category: "physical"
   },
   {
     id: 17,
-    text: "What is your typical bowel movement pattern?",
+    text: "How do you handle change?",
     options: {
-      vata: "Irregular, tends toward constipation or dry stools",
-      pitta: "Regular, soft but formed stools, may tend toward loose",
-      kapha: "Slow, regular, well-formed stools"
-    },
-    category: "physical"
-  },
-  {
-    id: 18,
-    text: "How do you handle financial matters?",
-    options: {
-      vata: "I tend to spend impulsively and may not always keep track",
-      pitta: "I'm organized and strategic with money, often saving for specific goals",
-      kapha: "I'm cautious with spending and prefer saving for security"
+      vata: "Adapts quickly but may feel unstable",
+      pitta: "Calculated adaptation when necessary",
+      kapha: "Resists change, prefers routine"
     },
     category: "behavioral"
   },
   {
-    id: 19,
-    text: "Which best describes your joints?",
+    id: 18,
+    text: "What's your physical stamina like?",
     options: {
-      vata: "My joints are thin, sometimes crack or feel stiff",
-      pitta: "My joints are of medium size and moderately flexible",
-      kapha: "My joints are large, well-lubricated, and stable"
+      vata: "Low stamina, tires quickly",
+      pitta: "Moderate stamina with good endurance",
+      kapha: "Strong stamina, rarely feels tired"
     },
     category: "physical"
   },
   {
-    id: 20,
-    text: "How do you approach learning new information?",
+    id: 19,
+    text: "How do you make decisions?",
     options: {
-      vata: "I grasp concepts quickly but may forget details later",
-      pitta: "I focus intensely and learn systematically through analysis",
-      kapha: "I learn slowly but retain information well once learned"
+      vata: "Quick but often changes mind",
+      pitta: "Decisive and calculated",
+      kapha: "Careful and methodical"
     },
     category: "mental"
+  },
+  {
+    id: 20,
+    text: "What's your typical weight pattern?",
+    options: {
+      vata: "Difficulty gaining weight, stays thin",
+      pitta: "Moderate weight, maintains easily",
+      kapha: "Gains weight easily, difficult to lose"
+    },
+    category: "physical"
   }
 ];
 
