@@ -18,203 +18,103 @@ export interface DoshaScore {
 export const doshaQuestions: Question[] = [
   {
     id: 1,
-    text: "How would you describe your physical frame?",
+    text: "What's your typical body frame?",
     options: {
-      vata: "Small and thin-boned with prominent joints",
-      pitta: "Medium, symmetrical build with good muscle tone",
-      kapha: "Large, well-developed frame with sturdy bones"
+      vata: "Thin, light, or petite",
+      pitta: "Medium, athletic build",
+      kapha: "Solid, strong build"
     },
     category: "physical"
   },
   {
     id: 2,
-    text: "What best describes your skin?",
+    text: "How does your skin usually feel?",
     options: {
-      vata: "Dry, thin, and cool to touch",
-      pitta: "Warm, reddish, sensitive with freckles or moles",
-      kapha: "Thick, smooth, and naturally moist"
+      vata: "Dry and rough",
+      pitta: "Warm and sensitive",
+      kapha: "Smooth and oily"
     },
     category: "physical"
   },
   {
     id: 3,
-    text: "Which best describes your hair characteristics?",
+    text: "What best describes your hair?",
     options: {
-      vata: "Dry, rough, or curly",
-      pitta: "Fine, straight, early graying",
-      kapha: "Thick, wavy, and luxuriant"
+      vata: "Dry, frizzy",
+      pitta: "Fine, early graying",
+      kapha: "Thick, oily"
     },
     category: "physical"
   },
   {
     id: 4,
-    text: "How would you describe your eyes?",
+    text: "How do you walk?",
     options: {
-      vata: "Small, active, darting eyes that are often dry",
-      pitta: "Medium-sized, sharp, penetrating gaze",
-      kapha: "Large, attractive eyes with thick lashes"
+      vata: "Fast, light steps",
+      pitta: "Purposeful stride",
+      kapha: "Slow, steady"
     },
-    category: "physical"
+    category: "behavioral"
   },
   {
     id: 5,
-    text: "What are your sleep patterns like?",
+    text: "How do you handle stress?",
     options: {
-      vata: "Light sleeper, tends to wake up easily",
-      pitta: "Moderate sleep, but sharp and quick to wake",
-      kapha: "Deep, long sleeper, slow to wake up"
+      vata: "Anxious, worried",
+      pitta: "Irritable, angry",
+      kapha: "Calm, withdrawn"
+    },
+    category: "mental"
+  },
+  {
+    id: 6,
+    text: "How's your appetite?",
+    options: {
+      vata: "Irregular, variable",
+      pitta: "Strong, frequent",
+      kapha: "Steady, can skip meals"
     },
     category: "physical"
   },
   {
-    id: 6,
-    text: "How do you typically walk?",
-    options: {
-      vata: "Quick, light steps with a variable pace",
-      pitta: "Determined, purposeful stride",
-      kapha: "Slow, steady, graceful gait"
-    },
-    category: "behavioral"
-  },
-  {
     id: 7,
-    text: "How would you describe your voice?",
+    text: "What's your energy like?",
     options: {
-      vata: "Low volume, fast-talking, tends to ramble",
-      pitta: "Sharp, clear, persuasive speech",
-      kapha: "Deep, melodious voice, speaks slowly"
+      vata: "Bursts of energy",
+      pitta: "Sharp, focused",
+      kapha: "Steady, sustained"
     },
-    category: "behavioral"
+    category: "physical"
   },
   {
     id: 8,
-    text: "What is your typical response to stress?",
+    text: "How do you learn new things?",
     options: {
-      vata: "Anxious, worried, and overwhelmed",
-      pitta: "Irritable, intense, and argumentative",
-      kapha: "Calm, withdrawn, seeks comfort"
+      vata: "Quick but forgetful",
+      pitta: "Sharp and focused",
+      kapha: "Slow but thorough"
     },
     category: "mental"
   },
   {
     id: 9,
-    text: "How do you handle finances?",
+    text: "How do you sleep?",
     options: {
-      vata: "Impulsive spender, variable habits",
-      pitta: "Calculated spender, good planning",
-      kapha: "Conservative, saves money well"
+      vata: "Light, easily disturbed",
+      pitta: "Moderate, regular",
+      kapha: "Deep, long"
     },
-    category: "behavioral"
+    category: "physical"
   },
   {
     id: 10,
-    text: "What's your characteristic body temperature?",
+    text: "How do you handle money?",
     options: {
-      vata: "Often feels cold, poor circulation",
-      pitta: "Feels warm, doesn't like hot weather",
-      kapha: "Moderate, adapts well to most temperatures"
-    },
-    category: "physical"
-  },
-  {
-    id: 11,
-    text: "How is your memory?",
-    options: {
-      vata: "Learns quickly but forgets quickly",
-      pitta: "Sharp, clear memory with good retention",
-      kapha: "Slow to learn but never forgets"
-    },
-    category: "mental"
-  },
-  {
-    id: 12,
-    text: "What's your emotional tendency?",
-    options: {
-      vata: "Easily excited, quick mood changes",
-      pitta: "Intense emotions, particularly around achievement",
-      kapha: "Steady, calm, slow to anger"
-    },
-    category: "mental"
-  },
-  {
-    id: 13,
-    text: "How's your digestion?",
-    options: {
-      vata: "Irregular, tends to bloat easily",
-      pitta: "Strong, gets hungry quickly",
-      kapha: "Slow but steady digestion"
-    },
-    category: "physical"
-  },
-  {
-    id: 14,
-    text: "What about your eating habits?",
-    options: {
-      vata: "Irregular eating patterns, variable appetite",
-      pitta: "Regular meals, strong appetite",
-      kapha: "Can skip meals easily, steady appetite"
+      vata: "Impulsive spender",
+      pitta: "Strategic planner",
+      kapha: "Careful saver"
     },
     category: "behavioral"
-  },
-  {
-    id: 15,
-    text: "How do you approach work?",
-    options: {
-      vata: "Creative but easily distracted",
-      pitta: "Focused, organized, and efficient",
-      kapha: "Methodical, steady, thorough"
-    },
-    category: "behavioral"
-  },
-  {
-    id: 16,
-    text: "What's your energy level like?",
-    options: {
-      vata: "Bursts of energy followed by exhaustion",
-      pitta: "Strong but measured energy throughout the day",
-      kapha: "Steady energy, but slow to get started"
-    },
-    category: "physical"
-  },
-  {
-    id: 17,
-    text: "How do you handle change?",
-    options: {
-      vata: "Adapts quickly but may feel unstable",
-      pitta: "Calculated adaptation when necessary",
-      kapha: "Resists change, prefers routine"
-    },
-    category: "behavioral"
-  },
-  {
-    id: 18,
-    text: "What's your physical stamina like?",
-    options: {
-      vata: "Low stamina, tires quickly",
-      pitta: "Moderate stamina with good endurance",
-      kapha: "Strong stamina, rarely feels tired"
-    },
-    category: "physical"
-  },
-  {
-    id: 19,
-    text: "How do you make decisions?",
-    options: {
-      vata: "Quick but often changes mind",
-      pitta: "Decisive and calculated",
-      kapha: "Careful and methodical"
-    },
-    category: "mental"
-  },
-  {
-    id: 20,
-    text: "What's your typical weight pattern?",
-    options: {
-      vata: "Difficulty gaining weight, stays thin",
-      pitta: "Moderate weight, maintains easily",
-      kapha: "Gains weight easily, difficult to lose"
-    },
-    category: "physical"
   }
 ];
 
@@ -222,58 +122,58 @@ export const doshaDescriptions = {
   vata: {
     title: "Vata",
     subtitle: "Air & Ether",
-    description: "Vata types are characterized by qualities of air and space, embodying movement, creativity, and quickness. When in balance, Vata individuals are energetic, creative, and flexible thinkers.",
+    description: "Your Vata constitution reflects qualities of air and space. You're naturally creative, quick, and adaptable.",
     characteristics: [
-      "Creative and imaginative",
-      "Quick to learn but might forget easily",
-      "Thin frame with prominent joints",
-      "Dry skin and hair",
-      "Variable energy and appetite",
-      "Tendency toward anxiety when out of balance"
+      "Light and agile physical structure",
+      "Creative and quick-thinking",
+      "Energetic and enthusiastic",
+      "Flexible and adaptable",
+      "Sensitive to cold",
+      "Variable digestion and appetite"
     ],
     color: "border-ayurveda-sky",
     recommendations: {
-      diet: "Favor warm, cooked, moist, and slightly oily foods. Reduce raw foods, especially in winter. Include sweet, sour, and salty tastes.",
-      lifestyle: "Maintain regular routines, especially with sleep and meals. Practice gentle, grounding exercise like yoga and walking. Keep warm and avoid excessive cold or wind.",
-      herbs: "Ashwagandha, ginger, cinnamon, and cardamom can be beneficial."
+      diet: "Focus on warm, nourishing foods. Best foods: sweet fruits, cooked vegetables, nuts, seeds, warm milk, ghee, and warming spices like ginger and cinnamon. Avoid: cold foods, raw vegetables, and caffeine.",
+      lifestyle: "Maintain regular daily routines, especially with meals and sleep. Practice gentle yoga, meditation, and self-massage with warm oils. Keep warm and protected from cold winds.",
+      herbs: "Ashwagandha for strength, Shatavari for nourishment, Calamus for mental clarity, Licorice root for vitality."
     }
   },
   pitta: {
     title: "Pitta",
     subtitle: "Fire & Water",
-    description: "Pitta types embody qualities of fire and water, representing transformation, intensity, and sharpness. When balanced, Pittas are intelligent, focused, and great leaders.",
+    description: "Your Pitta constitution embodies transformation and intensity. You're naturally focused, sharp, and determined.",
     characteristics: [
-      "Strong intellect and good concentration",
-      "Medium build with good muscle development",
-      "Fair skin that burns easily",
-      "Strong digestion and appetite",
-      "Natural leaders with sharp focus",
-      "Tendency toward irritability when out of balance"
+      "Athletic, medium build",
+      "Sharp intellect and good focus",
+      "Natural leader qualities",
+      "Strong metabolism",
+      "Sensitive to heat",
+      "Precise and organized"
     ],
     color: "border-ayurveda-terra",
     recommendations: {
-      diet: "Favor cooling, moderately heavy foods. Include sweet, bitter, and astringent tastes. Limit spicy, salty, and sour foods.",
-      lifestyle: "Avoid excessive heat and intense competition. Engage in moderate exercise during cooler times of day. Practice relaxation techniques and moonlight walks.",
-      herbs: "Aloe vera, coriander, mint, and fennel can be beneficial."
+      diet: "Choose cooling, sweet foods. Best foods: sweet fruits, coconut, milk, ghee, green vegetables, and mint. Avoid: spicy foods, fermented foods, and excessive salt.",
+      lifestyle: "Exercise during cooler hours, practice moon-gazing, swimming, and cooling breath work. Avoid excessive heat and competition.",
+      herbs: "Amalaki for cooling, Brahmi for mental balance, Neem for purification, Shatavari for emotional balance."
     }
   },
   kapha: {
     title: "Kapha",
     subtitle: "Earth & Water",
-    description: "Kapha types reflect qualities of earth and water, representing stability, nurturing, and strength. When in balance, Kaphas are compassionate, patient, and grounded individuals.",
+    description: "Your Kapha constitution reflects stability and strength. You're naturally calm, grounded, and nurturing.",
     characteristics: [
-      "Strong, sturdy build with well-developed physique",
-      "Smooth, cool skin with good hydration",
-      "Calm, steady temperament",
-      "Strong immunity and stamina",
-      "Loyal and supportive nature",
-      "Tendency toward lethargy when out of balance"
+      "Strong, well-built frame",
+      "Calm and patient nature",
+      "Excellent stamina",
+      "Steady emotional state",
+      "Good immunity",
+      "Methodical and thorough"
     ],
     color: "border-ayurveda-leaf",
     recommendations: {
-      diet: "Favor light, dry, and warm foods. Include pungent, bitter, and astringent tastes. Limit heavy, oily, and sweet foods.",
-      lifestyle: "Engage in regular, stimulating exercise. Create variety and new experiences in your routine. Rise early and avoid daytime naps.",
-      herbs: "Ginger, black pepper, turmeric, and honey can be beneficial."
+      diet: "Favor light, warm, and spicy foods. Best foods: leafy greens, legumes, honey, spices like black pepper and ginger. Avoid: heavy, cold, and sweet foods.",
+      lifestyle: "Engage in vigorous exercise, try new activities, wake up early. Practice energizing breathing exercises and dry massage.",
+      herbs: "Trikatu for metabolism, Guggulu for energy, Punarnava for vitality, Chitrak for digestion."
     }
   },
   vata_pitta: {
