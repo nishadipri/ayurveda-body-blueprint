@@ -18,101 +18,151 @@ export interface DoshaScore {
 export const doshaQuestions: Question[] = [
   {
     id: 1,
-    text: "What's your typical body frame?",
+    text: "How would you describe your body frame naturally?",
     options: {
-      vata: "Thin, light, or petite",
-      pitta: "Medium, athletic build",
-      kapha: "Solid, strong build"
+      vata: "Slim and delicate with prominent joints",
+      pitta: "Medium, athletic with good muscle tone",
+      kapha: "Strong, well-built with sturdy joints"
     },
     category: "physical"
   },
   {
     id: 2,
-    text: "How does your skin usually feel?",
+    text: "What's your typical skin condition?",
     options: {
-      vata: "Dry and rough",
-      pitta: "Warm and sensitive",
-      kapha: "Smooth and oily"
+      vata: "Dry, rough, or gets chapped easily",
+      pitta: "Sensitive, prone to redness",
+      kapha: "Smooth, naturally moisturized"
     },
     category: "physical"
   },
   {
     id: 3,
-    text: "What best describes your hair?",
+    text: "How do you usually feel in cold Danish winters?",
     options: {
-      vata: "Dry, frizzy",
-      pitta: "Fine, early graying",
-      kapha: "Thick, oily"
+      vata: "Very sensitive to cold, need extra layers",
+      pitta: "Moderate discomfort, adapt quickly",
+      kapha: "Handle cold well, enjoy winter"
     },
     category: "physical"
   },
   {
     id: 4,
-    text: "How do you walk?",
+    text: "What's your typical eating pattern?",
     options: {
-      vata: "Fast, light steps",
-      pitta: "Purposeful stride",
-      kapha: "Slow, steady"
+      vata: "Irregular, sometimes forget meals",
+      pitta: "Sharp hunger, need regular meals",
+      kapha: "Can easily skip meals, steady appetite"
     },
     category: "behavioral"
   },
   {
     id: 5,
-    text: "How do you handle stress?",
+    text: "How do you respond to stress at work?",
     options: {
-      vata: "Anxious, worried",
-      pitta: "Irritable, angry",
-      kapha: "Calm, withdrawn"
+      vata: "Become anxious and overwhelmed",
+      pitta: "Get frustrated and intense",
+      kapha: "Remain calm but withdraw"
     },
     category: "mental"
   },
   {
     id: 6,
-    text: "How's your appetite?",
+    text: "What's your usual sleep pattern?",
     options: {
-      vata: "Irregular, variable",
-      pitta: "Strong, frequent",
-      kapha: "Steady, can skip meals"
+      vata: "Light sleeper, wake up easily",
+      pitta: "Regular sleep but wake up hot",
+      kapha: "Deep sleeper, hard to wake up"
     },
     category: "physical"
   },
   {
     id: 7,
-    text: "What's your energy like?",
+    text: "How do you prefer to exercise?",
     options: {
-      vata: "Bursts of energy",
-      pitta: "Sharp, focused",
-      kapha: "Steady, sustained"
+      vata: "Gentle yoga or walking",
+      pitta: "Intense workouts, competitive sports",
+      kapha: "Slow but steady, endurance activities"
     },
-    category: "physical"
+    category: "behavioral"
   },
   {
     id: 8,
-    text: "How do you learn new things?",
+    text: "How's your memory?",
     options: {
-      vata: "Quick but forgetful",
-      pitta: "Sharp and focused",
-      kapha: "Slow but thorough"
+      vata: "Quick to learn, quick to forget",
+      pitta: "Sharp and focused memory",
+      kapha: "Slow to learn but never forget"
     },
     category: "mental"
   },
   {
     id: 9,
-    text: "How do you sleep?",
+    text: "What's your speaking style?",
     options: {
-      vata: "Light, easily disturbed",
-      pitta: "Moderate, regular",
-      kapha: "Deep, long"
+      vata: "Fast, enthusiastic, sometimes jumping topics",
+      pitta: "Clear, focused, precise",
+      kapha: "Calm, methodical, thoughtful"
+    },
+    category: "behavioral"
+  },
+  {
+    id: 10,
+    text: "How do you handle the Danish weather changes?",
+    options: {
+      vata: "Very sensitive to weather changes",
+      pitta: "Mostly affected by heat",
+      kapha: "Adapt well to changes"
     },
     category: "physical"
   },
   {
-    id: 10,
-    text: "How do you handle money?",
+    id: 11,
+    text: "What's your typical energy level throughout the day?",
     options: {
-      vata: "Impulsive spender",
-      pitta: "Strategic planner",
-      kapha: "Careful saver"
+      vata: "Fluctuating energy levels",
+      pitta: "Strong energy until exhaustion",
+      kapha: "Steady, consistent energy"
+    },
+    category: "physical"
+  },
+  {
+    id: 12,
+    text: "How do you make decisions?",
+    options: {
+      vata: "Quick but often changing mind",
+      pitta: "Decisive and determined",
+      kapha: "Careful and methodical"
+    },
+    category: "mental"
+  },
+  {
+    id: 13,
+    text: "What's your reaction to humid Copenhagen summers?",
+    options: {
+      vata: "Enjoy the warmth and moisture",
+      pitta: "Feel uncomfortable and irritated",
+      kapha: "Feel heavy and sluggish"
+    },
+    category: "physical"
+  },
+  {
+    id: 14,
+    text: "How do you handle projects and tasks?",
+    options: {
+      vata: "Start many, finish few",
+      pitta: "Focused and goal-oriented",
+      kapha: "Steady, methodical completion"
+    },
+    category: "behavioral"
+  },
+  {
+    id: 15,
+    text: "What's your relationship with routine?",
+    options: {
+      vata: "Prefer flexibility and spontaneity",
+      pitta: "Like structured but flexible schedules",
+      kapha: "Thrive on fixed routines"
     },
     category: "behavioral"
   }
@@ -122,58 +172,58 @@ export const doshaDescriptions = {
   vata: {
     title: "Vata",
     subtitle: "Air & Ether",
-    description: "Your Vata constitution reflects qualities of air and space. You're naturally creative, quick, and adaptable.",
+    description: "Your Vata constitution reflects qualities of air and space, making you naturally creative and adaptable to Copenhagen's dynamic environment.",
     characteristics: [
       "Light and agile physical structure",
       "Creative and quick-thinking",
-      "Energetic and enthusiastic",
-      "Flexible and adaptable",
-      "Sensitive to cold",
-      "Variable digestion and appetite"
+      "Sensitive to cold weather",
+      "Variable digestion and appetite",
+      "Enthusiastic and adaptable",
+      "Prone to anxiety when unbalanced"
     ],
     color: "border-ayurveda-sky",
     recommendations: {
-      diet: "Focus on warm, nourishing foods. Best foods: sweet fruits, cooked vegetables, nuts, seeds, warm milk, ghee, and warming spices like ginger and cinnamon. Avoid: cold foods, raw vegetables, and caffeine.",
-      lifestyle: "Maintain regular daily routines, especially with meals and sleep. Practice gentle yoga, meditation, and self-massage with warm oils. Keep warm and protected from cold winds.",
-      herbs: "Ashwagandha for strength, Shatavari for nourishment, Calamus for mental clarity, Licorice root for vitality."
+      diet: "Focus on warm, grounding foods available in Nordic cuisine. Best foods: root vegetables (carrots, parsnips, beets), warming grains (oats, rye bread), organic dairy, nuts (especially almonds), and local berries. Add warming spices like cardamom, cinnamon, and ginger. Avoid cold foods and raw vegetables.",
+      lifestyle: "Maintain regular daily routines, especially important during dark Danish winters. Practice gentle yoga, meditation, and regular oil massage. Keep warm and protected from cold winds. Consider light therapy during winter months.",
+      herbs: "European herbs that balance Vata: Chamomile (readily available in Copenhagen), Fennel (found in local markets), Rosemary (can be grown indoors), Nordic Thyme, and Peppermint. These can be found in local health stores or grown at home."
     }
   },
   pitta: {
     title: "Pitta",
     subtitle: "Fire & Water",
-    description: "Your Pitta constitution embodies transformation and intensity. You're naturally focused, sharp, and determined.",
+    description: "Your Pitta constitution embodies transformation and intensity, well-suited for the focused Danish work culture.",
     characteristics: [
       "Athletic, medium build",
       "Sharp intellect and good focus",
-      "Natural leader qualities",
       "Strong metabolism",
+      "Natural leadership qualities",
       "Sensitive to heat",
       "Precise and organized"
     ],
     color: "border-ayurveda-terra",
     recommendations: {
-      diet: "Choose cooling, sweet foods. Best foods: sweet fruits, coconut, milk, ghee, green vegetables, and mint. Avoid: spicy foods, fermented foods, and excessive salt.",
-      lifestyle: "Exercise during cooler hours, practice moon-gazing, swimming, and cooling breath work. Avoid excessive heat and competition.",
-      herbs: "Amalaki for cooling, Brahmi for mental balance, Neem for purification, Shatavari for emotional balance."
+      diet: "Choose cooling, sweet foods from local sources. Best foods: Nordic berries, apples, pears, cucumber, leafy greens, dairy products, and cooling grains like barley. Include fresh herbs like mint and dill. Avoid excessive spicy foods and fermented dishes.",
+      lifestyle: "Exercise during cooler hours (perfect for Nordic summers), enjoy water activities in Copenhagen's harbors and pools. Practice cooling breathing exercises. Balance work with relaxation in city parks.",
+      herbs: "Local cooling herbs: Mint (easily grown), Dandelion (found in parks), Nettle (local to Denmark), Lemon Balm, and Nordic Rose. Many of these can be found in Copenhagen's markets or grown in home gardens."
     }
   },
   kapha: {
     title: "Kapha",
     subtitle: "Earth & Water",
-    description: "Your Kapha constitution reflects stability and strength. You're naturally calm, grounded, and nurturing.",
+    description: "Your Kapha constitution reflects stability and strength, complementing the steady Danish lifestyle.",
     characteristics: [
       "Strong, well-built frame",
       "Calm and patient nature",
       "Excellent stamina",
-      "Steady emotional state",
       "Good immunity",
-      "Methodical and thorough"
+      "Steady emotional state",
+      "Methodical approach"
     ],
     color: "border-ayurveda-leaf",
     recommendations: {
-      diet: "Favor light, warm, and spicy foods. Best foods: leafy greens, legumes, honey, spices like black pepper and ginger. Avoid: heavy, cold, and sweet foods.",
-      lifestyle: "Engage in vigorous exercise, try new activities, wake up early. Practice energizing breathing exercises and dry massage.",
-      herbs: "Trikatu for metabolism, Guggulu for energy, Punarnava for vitality, Chitrak for digestion."
+      diet: "Favor light, warming foods common in Nordic cuisine. Best foods: rye bread, bitter greens, legumes, light soups, and warm spices. Include local herbs and spices like horseradish and mustard. Limit heavy dairy and sweet foods.",
+      lifestyle: "Embrace active lifestyle opportunities in Copenhagen - cycling, brisk walking in parks, swimming. Start your day early, especially during summer. Join group exercises to stay motivated.",
+      herbs: "Stimulating European herbs: Juniper (Nordic native), Ginger (available fresh), Birch (local tree), Black Pepper, and Nordic Sage. These can be found in local health food stores and markets."
     }
   },
   vata_pitta: {
