@@ -11,6 +11,7 @@ import EmbedInstructions from "./pages/EmbedInstructions";
 import NotFound from "./pages/NotFound";
 import EmbeddedQuestionnaire from "./pages/EmbeddedQuestionnaire";
 import EmbeddedResults from "./pages/EmbeddedResults";
+import DoshaInfo from "./pages/DoshaInfo";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/questionnaire" element={<Questionnaire />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/dosha-info" element={<DoshaInfo />} />
           <Route path="/embed" element={<EmbedInstructions />} />
           <Route path="/embedded-questionnaire" element={<EmbeddedQuestionnaire />} />
           <Route path="/embedded-results" element={<EmbeddedResults />} />

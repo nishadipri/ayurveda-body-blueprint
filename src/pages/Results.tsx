@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,7 +10,6 @@ const Results = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Get scores from location state or redirect if missing
   const scores = location.state?.scores as DoshaScore | undefined;
   
   useEffect(() => {
@@ -23,11 +22,9 @@ const Results = () => {
     return null;
   }
   
-  // Calculate dosha type based on scores
   const doshaType = calculateDoshaType(scores);
   const doshaInfo = doshaDescriptions[doshaType];
   
-  // Prepare chart data
   const { vata, pitta, kapha } = scores;
   const total = vata + pitta + kapha;
   const chartData = [
@@ -36,7 +33,6 @@ const Results = () => {
     { name: 'Kapha', value: kapha, percentage: Math.round((kapha / total) * 100) }
   ];
   
-  // Colors for chart
   const COLORS = ['#AAC8DF', '#C17A4E', '#6A8D73'];
   
   const CustomTooltip = ({ active, payload }: any) => {
@@ -144,7 +140,7 @@ const Results = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="outline" className="border-ayurveda-leaf text-ayurveda-leaf hover:bg-ayurveda-leaf/10">
-                  Learn More About Your Dosha
+                  <Link to="/dosha-info">Learn More About Your Dosha</Link>
                 </Button>
                 <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white" onClick={() => navigate('/questionnaire')}>
                   Retake the Quiz
