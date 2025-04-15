@@ -115,24 +115,28 @@ const QuestionnaireForm = () => {
         </RadioGroup>
 
         <div className="flex justify-between mt-8">
-          <Button 
-            variant="outline" 
-            onClick={handlePrevious} 
-            disabled={currentStep === 1}
-            className="border-ayurveda-leaf text-ayurveda-leaf hover:bg-ayurveda-leaf/10"
-          >
-            Previous
-          </Button>
-          
-          {currentStep < totalQuestions ? (
+          <div className="flex space-x-4">
             <Button 
-              onClick={handleNext}
-              disabled={!selectedAnswer}
-              className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white"
+              variant="outline" 
+              onClick={handlePrevious} 
+              disabled={currentStep === 1}
+              className="border-ayurveda-leaf text-ayurveda-leaf hover:bg-ayurveda-leaf/10"
             >
-              Next
+              Previous
             </Button>
-          ) : (
+            
+            {currentStep < totalQuestions && (
+              <Button 
+                onClick={handleNext}
+                disabled={!selectedAnswer}
+                className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white"
+              >
+                Next
+              </Button>
+            )}
+          </div>
+          
+          {currentStep === totalQuestions && (
             <Button 
               onClick={calculateResults}
               disabled={!selectedAnswer || formSubmitted}
@@ -148,3 +152,4 @@ const QuestionnaireForm = () => {
 };
 
 export default QuestionnaireForm;
+
