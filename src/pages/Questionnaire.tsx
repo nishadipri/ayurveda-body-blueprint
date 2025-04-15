@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import QuestionnaireForm from '@/components/QuestionnaireForm';
 
 const Questionnaire = () => {
@@ -24,7 +23,7 @@ const Questionnaire = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      {/* Footer removed as per user request */}
     </div>
   );
 };
