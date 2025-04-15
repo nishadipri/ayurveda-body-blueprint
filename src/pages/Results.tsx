@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -155,7 +154,6 @@ const Results = () => {
           </div>
         </section>
       </main>
-      
     </div>
   );
 };
