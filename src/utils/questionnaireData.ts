@@ -38,7 +38,7 @@ export const doshaQuestions: Question[] = [
   },
   {
     id: 3,
-    text: "How do you usually feel in cold Danish winters?",
+    text: "How do you usually feel in cold weather?",
     options: {
       vata: "Very sensitive to cold, need extra layers",
       pitta: "Moderate discomfort, adapt quickly",
@@ -108,9 +108,9 @@ export const doshaQuestions: Question[] = [
   },
   {
     id: 10,
-    text: "How do you handle the Danish weather changes?",
+    text: "How do you handle weather changes?",
     options: {
-      vata: "Very sensitive to weather changes",
+      vata: "Very sensitive to weather shifts",
       pitta: "Mostly affected by heat",
       kapha: "Adapt well to changes"
     },
@@ -138,7 +138,7 @@ export const doshaQuestions: Question[] = [
   },
   {
     id: 13,
-    text: "What's your reaction to humid Copenhagen summers?",
+    text: "What's your reaction to humid summers?",
     options: {
       vata: "Enjoy the warmth and moisture",
       pitta: "Feel uncomfortable and irritated",
@@ -168,11 +168,12 @@ export const doshaQuestions: Question[] = [
   }
 ];
 
+// Update doshaDescriptions to remove specific Danish references
 export const doshaDescriptions = {
   vata: {
     title: "Vata",
     subtitle: "Air & Ether",
-    description: "Your Vata constitution reflects qualities of air and space, making you naturally creative and adaptable to Copenhagen's dynamic environment.",
+    description: "Your Vata constitution reflects qualities of air and space, making you naturally creative and adaptable.",
     characteristics: [
       "Light and agile physical structure",
       "Creative and quick-thinking",
@@ -183,15 +184,15 @@ export const doshaDescriptions = {
     ],
     color: "border-ayurveda-sky",
     recommendations: {
-      diet: "Focus on warm, grounding foods available in Nordic cuisine. Best foods: root vegetables (carrots, parsnips, beets), warming grains (oats, rye bread), organic dairy, nuts (especially almonds), and local berries. Add warming spices like cardamom, cinnamon, and ginger. Avoid cold foods and raw vegetables.",
-      lifestyle: "Maintain regular daily routines, especially important during dark Danish winters. Practice gentle yoga, meditation, and regular oil massage. Keep warm and protected from cold winds. Consider light therapy during winter months.",
-      herbs: "European herbs that balance Vata: Chamomile (readily available in Copenhagen), Fennel (found in local markets), Rosemary (can be grown indoors), Nordic Thyme, and Peppermint. These can be found in local health stores or grown at home."
+      diet: "Focus on warm, grounding foods. Best foods: root vegetables, warming grains, organic dairy, nuts, and local berries. Add warming spices like cardamom, cinnamon, and ginger. Avoid cold foods and raw vegetables.",
+      lifestyle: "Maintain regular daily routines. Practice gentle yoga, meditation, and regular oil massage. Keep warm and protected from cold winds. Consider light therapy during darker seasons.",
+      herbs: "Beneficial herbs: Chamomile, Fennel, Rosemary, Thyme, and Peppermint. These can be found in local health stores or grown at home."
     }
   },
   pitta: {
     title: "Pitta",
     subtitle: "Fire & Water",
-    description: "Your Pitta constitution embodies transformation and intensity, well-suited for the focused Danish work culture.",
+    description: "Your Pitta constitution embodies transformation and intensity, well-suited for focused work.",
     characteristics: [
       "Athletic, medium build",
       "Sharp intellect and good focus",
@@ -202,15 +203,15 @@ export const doshaDescriptions = {
     ],
     color: "border-ayurveda-terra",
     recommendations: {
-      diet: "Choose cooling, sweet foods from local sources. Best foods: Nordic berries, apples, pears, cucumber, leafy greens, dairy products, and cooling grains like barley. Include fresh herbs like mint and dill. Avoid excessive spicy foods and fermented dishes.",
-      lifestyle: "Exercise during cooler hours (perfect for Nordic summers), enjoy water activities in Copenhagen's harbors and pools. Practice cooling breathing exercises. Balance work with relaxation in city parks.",
-      herbs: "Local cooling herbs: Mint (easily grown), Dandelion (found in parks), Nettle (local to Denmark), Lemon Balm, and Nordic Rose. Many of these can be found in Copenhagen's markets or grown in home gardens."
+      diet: "Choose cooling, sweet foods. Best foods: berries, apples, pears, cucumber, leafy greens, dairy products, and cooling grains. Include fresh herbs like mint and dill. Avoid excessive spicy foods and fermented dishes.",
+      lifestyle: "Exercise during cooler hours, enjoy water activities. Practice cooling breathing exercises. Balance work with relaxation in local parks.",
+      herbs: "Cooling herbs: Mint, Dandelion, Nettle, Lemon Balm, and local rose. Many can be found in local markets or grown in home gardens."
     }
   },
   kapha: {
     title: "Kapha",
     subtitle: "Earth & Water",
-    description: "Your Kapha constitution reflects stability and strength, complementing the steady Danish lifestyle.",
+    description: "Your Kapha constitution reflects stability and strength, complementing a steady lifestyle.",
     characteristics: [
       "Strong, well-built frame",
       "Calm and patient nature",
@@ -221,9 +222,9 @@ export const doshaDescriptions = {
     ],
     color: "border-ayurveda-leaf",
     recommendations: {
-      diet: "Favor light, warming foods common in Nordic cuisine. Best foods: rye bread, bitter greens, legumes, light soups, and warm spices. Include local herbs and spices like horseradish and mustard. Limit heavy dairy and sweet foods.",
-      lifestyle: "Embrace active lifestyle opportunities in Copenhagen - cycling, brisk walking in parks, swimming. Start your day early, especially during summer. Join group exercises to stay motivated.",
-      herbs: "Stimulating European herbs: Juniper (Nordic native), Ginger (available fresh), Birch (local tree), Black Pepper, and Nordic Sage. These can be found in local health food stores and markets."
+      diet: "Favor light, warming foods. Best foods: rye bread, bitter greens, legumes, light soups, and warm spices. Include local herbs and spices like horseradish and mustard. Limit heavy dairy and sweet foods.",
+      lifestyle: "Embrace active lifestyle opportunities - cycling, brisk walking in parks, swimming. Start your day early. Join group exercises to stay motivated.",
+      herbs: "Stimulating herbs: Juniper, Ginger, Birch, Black Pepper, and Sage. These can be found in local health food stores and markets."
     }
   },
   vata_pitta: {
