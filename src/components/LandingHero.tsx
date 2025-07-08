@@ -17,7 +17,7 @@ const LandingHero = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white text-lg py-6 px-8">
-                <Link to="/questionnaire">Take the Dosha Quiz</Link>
+                <Link to="/email-collection">Take the Dosha Quiz</Link>
               </Button>
               
             </div>

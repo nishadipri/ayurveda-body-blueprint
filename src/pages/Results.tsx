@@ -14,7 +14,7 @@ const Results = () => {
   
   useEffect(() => {
     if (!scores) {
-      navigate('/questionnaire');
+      navigate('/email-collection');
     }
   }, [scores, navigate]);
   
@@ -142,7 +142,7 @@ const Results = () => {
                 <Button variant="outline" className="border-ayurveda-leaf text-ayurveda-leaf hover:bg-ayurveda-leaf/10">
                   <Link to="/dosha-info">Learn More About Your Dosha</Link>
                 </Button>
-                <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white" onClick={() => navigate('/questionnaire')}>
+                <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white" onClick={() => navigate('/email-collection')}>
                   Retake the Quiz
                 </Button>
               </div>
