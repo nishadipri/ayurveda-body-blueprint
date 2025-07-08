@@ -49,11 +49,6 @@ const Index = () => {
               />
             </div>
             
-            <div className="text-center">
-              <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white text-lg py-6 px-8">
-                <Link to="/email-collection">Discover Your Dosha Now</Link>
-              </Button>
-            </div>
           </div>
         </section>
         
