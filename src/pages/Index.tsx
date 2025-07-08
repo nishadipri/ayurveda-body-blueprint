@@ -51,7 +51,7 @@ const Index = () => {
             
             <div className="text-center">
               <Button className="bg-ayurveda-leaf hover:bg-ayurveda-forest text-white text-lg py-6 px-8">
-                <Link to="/questionnaire">Discover Your Dosha Now</Link>
+                <Link to="/email-collection">Discover Your Dosha Now</Link>
               </Button>
             </div>
           </div>
@@ -102,7 +102,7 @@ const Index = () => {
                 </ul>
                 <div className="mt-8">
                   <Button className="bg-ayurveda-clay hover:bg-ayurveda-terra text-white text-lg py-6 px-8">
-                    <Link to="/questionnaire">Take the Dosha Quiz</Link>
+                    <Link to="/email-collection">Take the Dosha Quiz</Link>
                   </Button>
                 </div>
               </div>

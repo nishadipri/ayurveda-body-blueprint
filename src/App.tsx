@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import EmailCollection from "./pages/EmailCollection";
 import Questionnaire from "./pages/Questionnaire";
 import Results from "./pages/Results";
 import EmbedInstructions from "./pages/EmbedInstructions";
@@ -23,6 +24,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/email-collection" element={<EmailCollection />} />
           <Route path="/questionnaire" element={<Questionnaire />} />
           <Route path="/results" element={<Results />} />
           <Route path="/dosha-info" element={<DoshaInfo />} />
