@@ -4,8 +4,9 @@ import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { Sparkles, Heart, Leaf } from 'lucide-react';
 
 const EmailCollection = () => {
   const [email, setEmail] = useState('');
@@ -18,86 +19,101 @@ const EmailCollection = () => {
     
     if (!email || !email.includes('@')) {
       toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
+        title: "Please enter a valid email",
+        description: "We need your email to send your personalized results.",
         variant: "destructive",
       });
       return;
     }
 
     setIsSubmitting(true);
-    
-    // Store email in localStorage for now
     localStorage.setItem('userEmail', email);
     
-    // Simulate a brief loading state
     setTimeout(() => {
       toast({
-        title: "Email Collected!",
-        description: "Thank you! Now let's discover your dosha.",
+        title: "Welcome to your journey",
+        description: "Let's discover your unique constitution together.",
       });
       navigate('/questionnaire');
-    }, 500);
+    }, 400);
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
       <main className="flex-grow questionnaire-container">
-        <section className="py-12 md:py-16">
-          <div className="container max-w-2xl">
-            <div className="text-center mb-10">
-              <h1 className="font-neuton text-3xl md:text-4xl font-semibold text-primary mb-4">
-                Start Your Ayur Glow Journey
+        <section className="py-16 md:py-24">
+          <div className="ayur-container max-w-xl">
+            {/* Header */}
+            <div className="text-center mb-10 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 text-accent mb-4">
+                <Sparkles className="w-5 h-5" />
+                <span className="text-sm font-medium uppercase tracking-wider">Begin Your Journey</span>
+              </div>
+              <h1 className="font-cormorant text-4xl md:text-5xl font-medium text-foreground mb-4">
+                Discover Your Dosha
               </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Enter your email to receive your personalized dosha results and exclusive Ayurvedic wellness tips.
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-md mx-auto">
+                In just a few minutes, uncover the ancient wisdom of your unique mind-body constitution.
               </p>
             </div>
             
-            <Card className="shadow-lg">
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl font-neuton">
-                  Get Your Personalized Results
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+            {/* Email Card */}
+            <Card className="shadow-soft rounded-2xl border-border/50 animate-fade-in-up animate-delay-100">
+              <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-base font-medium">
-                      Email Address
+                    <Label htmlFor="email" className="text-base font-medium text-foreground">
+                      Where should we send your results?
                     </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="Enter your email address"
+                      placeholder="your@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="text-base py-3"
+                      className="text-base py-6 rounded-xl border-border/50 focus:border-accent"
                       required
                     />
                   </div>
                   
-                  <div className="text-sm text-muted-foreground">
-                    <p>✓ Receive your detailed dosha analysis</p>
-                    <p>✓ Get personalized wellness recommendations</p>
-                    <p>✓ Access exclusive Ayurvedic lifestyle tips</p>
+                  {/* Benefits */}
+                  <div className="space-y-3 py-4">
+                    <div className="flex items-start gap-3">
+                      <Heart className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-muted-foreground">Personalized dosha analysis based on Ayurvedic wisdom</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Leaf className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-muted-foreground">Custom food, lifestyle, and gut health recommendations</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Sparkles className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-muted-foreground">Insights for daily balance and self-awareness</p>
+                    </div>
                   </div>
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
+                    className="w-full btn-gold text-lg py-6"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Processing...' : 'Start Dosha Quiz →'}
+                    {isSubmitting ? 'Starting...' : 'Begin the Quiz'}
                   </Button>
                 </form>
                 
-                <p className="text-xs text-muted-foreground text-center mt-4">
-                  We respect your privacy. Your email will only be used to send your results and wellness tips.
+                <p className="text-xs text-muted-foreground text-center mt-6">
+                  Your privacy matters. We'll only use your email to send your results and gentle wellness tips.
                 </p>
               </CardContent>
             </Card>
+            
+            {/* Trust indicators */}
+            <div className="text-center mt-8 animate-fade-in-up animate-delay-200">
+              <p className="text-sm text-muted-foreground">
+                Based on 5,000+ years of Ayurvedic knowledge
+              </p>
+            </div>
           </div>
         </section>
       </main>
