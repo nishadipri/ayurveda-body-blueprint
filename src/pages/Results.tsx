@@ -85,8 +85,7 @@ const Results = () => {
 
     if (!consent) {
       toast({
-        title: "Please confirm you'd like to receive insights",
-        description: "Check the consent box to continue.",
+        title: "Please check the box to receive your result by email",
         variant: "destructive",
       });
       return;
@@ -95,12 +94,16 @@ const Results = () => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('subscribe', {
+      // Determine dosha key for email tips
+      const doshaKey = dominantDosha.name.toLowerCase();
+      
+      const { data, error } = await supabase.functions.invoke('quiz-complete', {
         body: {
           email: email.trim().toLowerCase(),
-          consent,
-          source: 'results_page',
-          dosha_result: `${dominantDosha.name} (${dominantDosha.percentage}%), ${secondaryDosha.name} (${secondaryDosha.percentage}%)`,
+          consent: true,
+          dosha_result: doshaKey,
+          scores: scores,
+          source: 'results_page_email',
         },
       });
 
@@ -108,11 +111,11 @@ const Results = () => {
 
       setEmailSubmitted(true);
       toast({
-        title: data.message || "Saved 🤍",
-        description: "You'll receive gentle insights in your inbox.",
+        title: "Sent! ✉️",
+        description: "Check your inbox (or spam/promotions folder).",
       });
     } catch (error: any) {
-      console.error('Subscribe error:', error);
+      console.error('Email send error:', error);
       toast({
         title: "Something went wrong",
         description: "Please try again.",
@@ -289,10 +292,10 @@ const Results = () => {
                     <Mail className="w-6 h-6 text-accent" />
                   </div>
                   <h3 className="font-cormorant text-2xl font-medium mb-3">
-                    Stay connected with your wellness journey
+                    Send me a copy of my result
                   </h3>
                   <p className="text-muted-foreground mb-6 max-w-lg mx-auto leading-relaxed">
-                    If you'd like gentle follow-up insights, you can leave your email. <span className="text-primary font-medium">Optional</span> — continue without it.
+                    Get your personalized dosha tips delivered to your inbox. <span className="text-primary font-medium">Optional</span> — continue without it.
                   </p>
                   <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
                     <div className="flex flex-col sm:flex-row gap-3 mb-4">
@@ -308,7 +311,7 @@ const Results = () => {
                         className="btn-gold whitespace-nowrap"
                         disabled={isSubmitting || !email || !consent}
                       >
-                        {isSubmitting ? 'Saving...' : 'Save'}
+                        {isSubmitting ? 'Sending...' : 'Send'}
                       </Button>
                     </div>
                     <div className="flex items-start gap-3 text-left">
@@ -319,7 +322,7 @@ const Results = () => {
                         className="mt-0.5"
                       />
                       <label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
-                        I'd like to receive occasional AyurGlow insights. Unsubscribe anytime.
+                        Yes, send my dosha result and tips to my email.
                       </label>
                     </div>
                   </form>
@@ -332,10 +335,10 @@ const Results = () => {
                     <Check className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-cormorant text-2xl font-medium mb-2">
-                    Saved 🤍
+                    Sent! ✉️
                   </h3>
                   <p className="text-muted-foreground">
-                    You'll receive gentle wellness insights in your inbox.
+                    Check your inbox (and spam/promotions folder).
                   </p>
                 </CardContent>
               </Card>

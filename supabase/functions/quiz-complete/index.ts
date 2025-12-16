@@ -130,6 +130,9 @@ serve(async (req: Request): Promise<Response> => {
           const tips = doshaTips[dosha_result] || doshaTips.tri_dosha;
           const doshaDisplayName = doshaNames[dosha_result] || dosha_result;
           
+          // Use SITE_URL env var or fallback
+          const siteUrl = Deno.env.get("SITE_URL") || "https://wpczgwxsriezaubncuom.lovable.app";
+          
           const emailHtml = `
 <!DOCTYPE html>
 <html>
@@ -158,7 +161,7 @@ serve(async (req: Request): Promise<Response> => {
     </div>
     
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://your-app-url.lovable.app/results" 
+      <a href="${siteUrl}/results" 
          style="display: inline-block; background-color: #c9a227; color: white; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;">
         View Full Results
       </a>
@@ -166,7 +169,7 @@ serve(async (req: Request): Promise<Response> => {
     
     <div style="background-color: #f8f6f3; padding: 20px; border-radius: 12px; text-align: center; margin-top: 20px;">
       <p style="color: #6b7b6e; font-size: 14px; margin: 0 0 12px 0;">Ready for personalized guidance?</p>
-      <a href="https://your-app-url.lovable.app/book" 
+      <a href="${siteUrl}/book" 
          style="color: #2d4a3e; font-weight: 600; text-decoration: underline;">
         Book a Free 1:1 Call →
       </a>
