@@ -1,21 +1,26 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import QuestionnaireForm from '@/components/QuestionnaireForm';
+import { Leaf } from 'lucide-react';
 
 const Questionnaire = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
       <main className="flex-grow questionnaire-container">
         <section className="py-12 md:py-16">
-          <div className="container max-w-4xl">
-            <div className="text-center mb-10">
-              <h1 className="font-lora text-3xl md:text-4xl font-semibold text-ayurveda-forest mb-4">
-                Discover Your Ayurvedic Constitution
+          <div className="ayur-container max-w-2xl">
+            {/* Header */}
+            <div className="text-center mb-10 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 text-primary mb-4">
+                <Leaf className="w-5 h-5" />
+                <span className="text-sm font-medium uppercase tracking-wider">Dosha Quiz</span>
+              </div>
+              <h1 className="font-cormorant text-3xl md:text-4xl font-medium text-foreground mb-4">
+                Discover Your Constitution
               </h1>
-              <p className="text-lg text-ayurveda-forest/80 max-w-2xl mx-auto">
-                Answer the following 20 questions honestly based on your natural tendencies throughout your life, not just your current state. This will help determine your unique Ayur Glow body blueprint.
+              <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                Answer based on your natural tendencies throughout life, not just how you feel today. There are no right or wrong answers.
               </p>
             </div>
             
@@ -23,7 +28,6 @@ const Questionnaire = () => {
           </div>
         </section>
       </main>
-      {/* Footer removed as per user request */}
     </div>
   );
 };
