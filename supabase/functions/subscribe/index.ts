@@ -13,6 +13,33 @@ interface SubscribeRequest {
   dosha_result?: string;
 }
 
+// Simple in-memory rate limiting (resets on function cold start)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+
+  record.count++;
+  return false;
+}
+
+// Input validation constants
+const MAX_SOURCE_LENGTH = 100;
+const MAX_DOSHA_RESULT_LENGTH = 500;
+const MAX_EMAIL_LENGTH = 255;
+
 serve(async (req: Request): Promise<Response> => {
   // Handle CORS preflight
   if (req.method === "OPTIONS") {
@@ -20,16 +47,40 @@ serve(async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Get client IP for rate limiting
+    const clientIP = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || 
+                     req.headers.get("x-real-ip") || 
+                     "unknown";
+
+    // Check rate limit
+    if (isRateLimited(clientIP)) {
+      console.log(`Rate limited IP: ${clientIP}`);
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Please try again later." }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const { email, consent, source, dosha_result }: SubscribeRequest = await req.json();
 
-    // Validate email
+    // Validate email format and length
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
+    if (!email || !emailRegex.test(email) || email.length > MAX_EMAIL_LENGTH) {
       return new Response(
         JSON.stringify({ error: "Please enter a valid email" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+
+    // Validate and sanitize source field
+    const sanitizedSource = source 
+      ? String(source).slice(0, MAX_SOURCE_LENGTH).trim() 
+      : "results_page";
+
+    // Validate and sanitize dosha_result field
+    const sanitizedDoshaResult = dosha_result 
+      ? String(dosha_result).slice(0, MAX_DOSHA_RESULT_LENGTH).trim() 
+      : undefined;
 
     // Create Supabase client with service role key for secure insert
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -40,8 +91,8 @@ serve(async (req: Request): Promise<Response> => {
     const { error } = await supabase.from("subscribers").insert({
       email: email.toLowerCase().trim(),
       consent,
-      source: source || "results_page",
-      dosha_result,
+      source: sanitizedSource,
+      dosha_result: sanitizedDoshaResult,
     });
 
     if (error) {
