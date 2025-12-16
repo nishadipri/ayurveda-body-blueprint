@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import EmbeddedQuestionnaire from "./pages/EmbeddedQuestionnaire";
 import EmbeddedResults from "./pages/EmbeddedResults";
 import DoshaInfo from "./pages/DoshaInfo";
+import Book from "./pages/Book";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +28,7 @@ const App = () => (
           <Route path="/questionnaire" element={<Questionnaire />} />
           <Route path="/results" element={<Results />} />
           <Route path="/dosha-info" element={<DoshaInfo />} />
+          <Route path="/book" element={<Book />} />
           <Route path="/embed" element={<EmbedInstructions />} />
           <Route path="/embedded-questionnaire" element={<EmbeddedQuestionnaire />} />
           <Route path="/embedded-results" element={<EmbeddedResults />} />

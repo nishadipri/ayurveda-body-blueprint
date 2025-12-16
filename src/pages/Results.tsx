@@ -4,28 +4,27 @@ import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 import { DoshaScore, calculateDoshaType, doshaDescriptions } from '@/utils/questionnaireData';
 import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip } from 'recharts';
-import { Mail, Sparkles, Heart, Leaf } from 'lucide-react';
+import { Mail, Sparkles, Heart, Leaf, Calendar, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Results = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [email, setEmail] = useState('');
+  const [consent, setConsent] = useState(false);
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const scores = location.state?.scores as DoshaScore | undefined;
   
   useEffect(() => {
     if (!scores) {
       navigate('/email-collection');
-    }
-    // Check if email already exists
-    const savedEmail = localStorage.getItem('userEmail');
-    if (savedEmail) {
-      setEmail(savedEmail);
     }
   }, [scores, navigate]);
   
@@ -66,15 +65,60 @@ const Results = () => {
     return null;
   };
 
-  const handlePdfRequest = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      localStorage.setItem('userEmail', email);
+    
+    if (!email) {
+      return; // Email is optional
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({
+        title: "Please enter a valid email",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!consent) {
+      toast({
+        title: "Please confirm you'd like to receive insights",
+        description: "Check the consent box to continue.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('subscribe', {
+        body: {
+          email: email.trim().toLowerCase(),
+          consent,
+          source: 'results_page',
+          dosha_result: `${dominantDosha.name} (${dominantDosha.percentage}%), ${secondaryDosha.name} (${secondaryDosha.percentage}%)`,
+        },
+      });
+
+      if (error) throw error;
+
       setEmailSubmitted(true);
       toast({
-        title: "Thank you!",
-        description: "Your personalized Dosha guide will arrive in your inbox soon.",
+        title: data.message || "Saved 🤍",
+        description: "You'll receive gentle insights in your inbox.",
       });
+    } catch (error: any) {
+      console.error('Subscribe error:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -209,7 +253,7 @@ const Results = () => {
               </CardContent>
             </Card>
             
-            {/* PDF Email Invitation - Gentle Gift */}
+            {/* Optional Email Capture - Gentle, No Pressure */}
             {!emailSubmitted ? (
               <Card className="mb-12 shadow-soft border-accent/20 bg-gradient-to-br from-card to-accent/5 animate-fade-in-up">
                 <CardContent className="p-8 text-center">
@@ -217,47 +261,81 @@ const Results = () => {
                     <Mail className="w-6 h-6 text-accent" />
                   </div>
                   <h3 className="font-cormorant text-2xl font-medium mb-3">
-                    Would you like a deeper, personalized guide?
+                    Stay connected with your wellness journey
                   </h3>
                   <p className="text-muted-foreground mb-6 max-w-lg mx-auto leading-relaxed">
-                    I've created a simple PDF with food recommendations, daily rituals, and gut health tips specifically for your {dominantDosha.name} constitution. It's my gift to you.
+                    If you'd like gentle follow-up insights, you can leave your email. <span className="text-primary font-medium">Optional</span> — continue without it.
                   </p>
-                  <form onSubmit={handlePdfRequest} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                    <Input
-                      type="email"
-                      placeholder="Your email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 rounded-xl border-border/50 focus:border-accent"
-                      required
-                    />
-                    <Button 
-                      type="submit" 
-                      className="btn-gold whitespace-nowrap"
-                    >
-                      Send My Guide
-                    </Button>
+                  <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
+                    <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                      <Input
+                        type="email"
+                        placeholder="Your email address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="flex-1 rounded-xl border-border/50 focus:border-accent"
+                      />
+                      <Button 
+                        type="submit" 
+                        className="btn-gold whitespace-nowrap"
+                        disabled={isSubmitting || !email || !consent}
+                      >
+                        {isSubmitting ? 'Saving...' : 'Save'}
+                      </Button>
+                    </div>
+                    <div className="flex items-start gap-3 text-left">
+                      <Checkbox 
+                        id="consent" 
+                        checked={consent}
+                        onCheckedChange={(checked) => setConsent(checked as boolean)}
+                        className="mt-0.5"
+                      />
+                      <label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
+                        I'd like to receive occasional AyurGlow insights. Unsubscribe anytime.
+                      </label>
+                    </div>
                   </form>
-                  <p className="text-xs text-muted-foreground mt-4">
-                    No spam, just ancient wisdom for modern living.
-                  </p>
                 </CardContent>
               </Card>
             ) : (
               <Card className="mb-12 shadow-soft border-primary/20 bg-gradient-to-br from-card to-primary/5 animate-scale-in">
                 <CardContent className="p-8 text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <Heart className="w-6 h-6 text-primary" />
+                    <Check className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-cormorant text-2xl font-medium mb-2">
-                    Your guide is on its way
+                    Saved 🤍
                   </h3>
                   <p className="text-muted-foreground">
-                    Check your inbox for your personalized {dominantDosha.name} Dosha guide.
+                    You'll receive gentle wellness insights in your inbox.
                   </p>
                 </CardContent>
               </Card>
             )}
+
+            {/* Book a Call CTA */}
+            <Card className="mb-12 shadow-soft border-primary/30 animate-fade-in-up">
+              <CardContent className="p-8 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-cormorant text-2xl font-medium mb-3">
+                  Want to explore your results together?
+                </h3>
+                <p className="text-muted-foreground mb-6 max-w-lg mx-auto leading-relaxed">
+                  A calm, friendly chat to understand your Dosha and digestion better. No pressure, no sales.
+                </p>
+                <Button 
+                  className="btn-teal"
+                  asChild
+                >
+                  <Link to="/book">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Book a Free 1:1 Call
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
             
             {/* Footer Actions */}
             <div className="text-center">
@@ -270,7 +348,7 @@ const Results = () => {
                   <Link to="/dosha-info">Learn More About Doshas</Link>
                 </Button>
                 <Button 
-                  className="btn-teal"
+                  className="btn-gold"
                   onClick={() => navigate('/email-collection')}
                 >
                   Retake the Quiz
