@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Header from '@/components/Header';
+import DecorativeBackground from '@/components/DecorativeBackground';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { DoshaScore, calculateDoshaType, doshaDescriptions } from '@/utils/questionnaireData';
 import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip } from 'recharts';
-import { Mail, Sparkles, Heart, Leaf, Calendar, Check } from 'lucide-react';
+import { Mail, Sparkles, Heart, Leaf, Calendar, Check, Wind, Flame, Droplets } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -122,20 +123,35 @@ const Results = () => {
     }
   };
 
+  const getDoshaIcon = (name: string) => {
+    if (name === 'Vata') return <Wind className="w-5 h-5" />;
+    if (name === 'Pitta') return <Flame className="w-5 h-5" />;
+    if (name === 'Kapha') return <Droplets className="w-5 h-5" />;
+    return null;
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-grow">
-        <section className="py-16 md:py-20">
+      <main className="flex-grow relative overflow-hidden">
+        <DecorativeBackground variant="default" />
+        
+        <section className="relative z-10 py-16 md:py-20">
           <div className="ayur-container">
             {/* Header Section */}
-            <div className="text-center max-w-2xl mx-auto mb-12 animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 text-accent mb-4">
-                <Sparkles className="w-5 h-5" />
-                <span className="text-sm font-medium uppercase tracking-wider">Your Results</span>
+            <div className="text-center max-w-2xl mx-auto mb-14 animate-fade-in-up">
+              {/* Decorative line */}
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-accent/40" />
+                <Sparkles className="w-4 h-4 text-accent" />
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-accent/40" />
               </div>
-              <h1 className="font-cormorant text-4xl md:text-5xl font-medium text-foreground mb-4">
-                A Moment of Clarity
+              
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full mb-5 border border-accent/20">
+                <span className="text-sm font-medium uppercase tracking-wider text-accent">Your Results</span>
+              </div>
+              <h1 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-medium text-foreground mb-4">
+                A Moment of <span className="gradient-text-gold">Clarity</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Your unique constitution reveals itself. Here's what your body and mind have been trying to tell you.
@@ -143,20 +159,26 @@ const Results = () => {
             </div>
             
             {/* Two Dominant Doshas Display */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
               {/* Primary Dosha */}
-              <Card className="overflow-hidden shadow-soft animate-fade-in-up animate-delay-100">
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Heart className="w-5 h-5 text-accent" />
-                    <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Primary Dosha</span>
+              <Card className="group relative overflow-hidden shadow-soft rounded-2xl border-0 animate-fade-in-up animate-delay-100 hover:shadow-lg transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <Heart className="w-4 h-4 text-accent" />
+                      <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Primary Dosha</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-accent/10 text-accent">
+                      {getDoshaIcon(dominantDosha.name)}
+                    </div>
                   </div>
                   <h2 className="font-cormorant text-4xl md:text-5xl font-semibold mb-2">
-                    <span className="dosha-highlight text-foreground">{dominantDosha.name}</span>
+                    <span className="gradient-text-gold">{dominantDosha.name}</span>
                   </h2>
                   <p className="text-3xl font-cormorant text-accent font-medium">{dominantDosha.percentage}%</p>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 relative">
                   <p className="text-muted-foreground leading-relaxed">
                     {dominantDosha.name === 'Vata' && 'Creative, quick-thinking, and adaptable. You thrive with warmth, routine, and grounding practices.'}
                     {dominantDosha.name === 'Pitta' && 'Passionate, focused, and driven. You shine with cooling foods, moderation, and mindful rest.'}
@@ -166,18 +188,24 @@ const Results = () => {
               </Card>
               
               {/* Secondary Dosha */}
-              <Card className="overflow-hidden shadow-soft animate-fade-in-up animate-delay-200">
-                <div className="bg-gradient-to-br from-secondary to-secondary/50 p-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Leaf className="w-5 h-5 text-primary" />
-                    <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Secondary Dosha</span>
+              <Card className="group relative overflow-hidden shadow-soft rounded-2xl border-0 animate-fade-in-up animate-delay-200 hover:shadow-lg transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative bg-gradient-to-br from-secondary via-secondary/70 to-transparent p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <Leaf className="w-4 h-4 text-primary" />
+                      <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Secondary Dosha</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                      {getDoshaIcon(secondaryDosha.name)}
+                    </div>
                   </div>
                   <h2 className="font-cormorant text-4xl md:text-5xl font-semibold mb-2">
-                    <span className="text-foreground">{secondaryDosha.name}</span>
+                    <span className="gradient-text">{secondaryDosha.name}</span>
                   </h2>
                   <p className="text-3xl font-cormorant text-primary font-medium">{secondaryDosha.percentage}%</p>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 relative">
                   <p className="text-muted-foreground leading-relaxed">
                     {secondaryDosha.name === 'Vata' && 'Your secondary Vata brings creativity and movement to your constitution.'}
                     {secondaryDosha.name === 'Pitta' && 'Your secondary Pitta adds ambition and transformation energy.'}
