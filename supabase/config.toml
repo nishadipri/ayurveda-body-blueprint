@@ -2,3 +2,6 @@ project_id = "liizandokccsqalamzdz"
 
 [functions.subscribe]
 verify_jwt = false
+
+[functions.quiz-complete]
+verify_jwt = false

@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { doshaQuestions, DoshaScore } from '@/utils/questionnaireData';
+import { doshaQuestions, DoshaScore, calculateDoshaType } from '@/utils/questionnaireData';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const QuestionnaireForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -47,7 +48,7 @@ const QuestionnaireForm = () => {
     }
   };
 
-  const calculateResults = () => {
+  const calculateResults = async () => {
     setFormSubmitted(true);
     
     const scores: DoshaScore = {
@@ -63,8 +64,32 @@ const QuestionnaireForm = () => {
       }
     });
     
+    // Calculate dosha type for the email
+    const doshaType = calculateDoshaType(scores);
+    
+    // Navigate to results immediately (no dependency on email)
     const resultsPath = isEmbedded ? '/embedded-results' : '/results';
     navigate(resultsPath, { state: { scores } });
+    
+    // Send email in background if user provided email + consent
+    const userEmail = localStorage.getItem('userEmail');
+    if (userEmail) {
+      try {
+        await supabase.functions.invoke('quiz-complete', {
+          body: {
+            email: userEmail,
+            consent: true, // User provided email = implicit consent for result email
+            dosha_result: doshaType,
+            scores,
+            source: 'quiz_completion'
+          }
+        });
+        // Clear email from localStorage after sending
+        localStorage.removeItem('userEmail');
+      } catch (err) {
+        console.error('Failed to send quiz results:', err);
+      }
+    }
   };
 
   if (!currentQuestion) {
