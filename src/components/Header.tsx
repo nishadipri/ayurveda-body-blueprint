@@ -24,6 +24,12 @@ const Header = () => {
             About Doshas
           </Link>
           <Link 
+            to="/book" 
+            className="text-sm text-muted-foreground hover:text-foreground transition-soft magic-underline"
+          >
+            Book a Call
+          </Link>
+          <Link 
             to="/email-collection" 
             className="inline-flex items-center gap-1.5 text-sm px-4 py-2 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-soft"
           >
