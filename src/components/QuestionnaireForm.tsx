@@ -64,27 +64,23 @@ const QuestionnaireForm = () => {
       }
     });
     
-    // Calculate dosha type for the email
     const doshaType = calculateDoshaType(scores);
     
-    // Navigate to results immediately (no dependency on email)
     const resultsPath = isEmbedded ? '/embedded-results' : '/results';
     navigate(resultsPath, { state: { scores } });
     
-    // Send email in background if user provided email + consent
     const userEmail = localStorage.getItem('userEmail');
     if (userEmail) {
       try {
         await supabase.functions.invoke('quiz-complete', {
           body: {
             email: userEmail,
-            consent: true, // User provided email = implicit consent for result email
+            consent: true,
             dosha_result: doshaType,
             scores,
             source: 'quiz_completion'
           }
         });
-        // Clear email from localStorage after sending
         localStorage.removeItem('userEmail');
       } catch (err) {
         console.error('Failed to send quiz results:', err);
@@ -94,8 +90,8 @@ const QuestionnaireForm = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="flex items-center justify-center p-12">
-        <div className="text-muted-foreground">Loading your journey...</div>
+      <div className="flex items-center justify-center p-8 sm:p-12">
+        <div className="text-muted-foreground text-sm sm:text-base">Loading your journey...</div>
       </div>
     );
   }
@@ -103,12 +99,12 @@ const QuestionnaireForm = () => {
   return (
     <div className="animate-fade-in-up">
       {/* Progress Section */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-sm text-muted-foreground">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex justify-between items-center mb-2 sm:mb-3">
+          <span className="text-xs sm:text-sm text-muted-foreground">
             Question {currentStep} of {totalQuestions}
           </span>
-          <span className="text-sm font-medium text-primary">
+          <span className="text-xs sm:text-sm font-medium text-primary">
             {progress}% complete
           </span>
         </div>
@@ -124,13 +120,13 @@ const QuestionnaireForm = () => {
       </div>
 
       {/* Question Card */}
-      <Card className="p-8 shadow-soft rounded-2xl border-border/50 card-calm">
-        <h3 className="font-cormorant text-2xl md:text-3xl font-medium text-foreground mb-8 leading-relaxed">
+      <Card className="p-4 sm:p-6 md:p-8 shadow-soft rounded-xl sm:rounded-2xl border-border/50 card-calm">
+        <h3 className="font-cormorant text-xl sm:text-2xl md:text-3xl font-medium text-foreground mb-5 sm:mb-8 leading-relaxed">
           {currentQuestion.text}
         </h3>
         
         <RadioGroup 
-          className="space-y-3" 
+          className="space-y-2 sm:space-y-3" 
           value={selectedAnswer || undefined}
           onValueChange={setSelectedAnswer}
         >
@@ -138,7 +134,7 @@ const QuestionnaireForm = () => {
             <div 
               key={dosha}
               className={`
-                flex items-center space-x-4 p-4 rounded-xl cursor-pointer
+                flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg sm:rounded-xl cursor-pointer
                 transition-soft border-2
                 ${selectedAnswer === dosha 
                   ? 'border-accent bg-accent/5' 
@@ -150,11 +146,11 @@ const QuestionnaireForm = () => {
               <RadioGroupItem 
                 value={dosha} 
                 id={dosha}
-                className="border-muted-foreground data-[state=checked]:border-accent data-[state=checked]:bg-accent"
+                className="border-muted-foreground data-[state=checked]:border-accent data-[state=checked]:bg-accent flex-shrink-0"
               />
               <Label 
                 htmlFor={dosha} 
-                className="flex-1 cursor-pointer text-foreground leading-relaxed"
+                className="flex-1 cursor-pointer text-foreground leading-relaxed text-sm sm:text-base"
               >
                 {currentQuestion.options[dosha as keyof typeof currentQuestion.options]}
               </Label>
@@ -163,22 +159,22 @@ const QuestionnaireForm = () => {
         </RadioGroup>
 
         {/* Navigation */}
-        <div className="flex justify-between items-center mt-10 pt-6 border-t border-border/50">
+        <div className="flex justify-between items-center mt-6 sm:mt-10 pt-4 sm:pt-6 border-t border-border/50">
           <Button 
             variant="ghost" 
             onClick={handlePrevious} 
             disabled={currentStep === 1}
-            className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-xl gap-2"
+            className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg sm:rounded-xl gap-1 sm:gap-2 text-sm sm:text-base px-2 sm:px-4"
           >
             <ChevronLeft className="w-4 h-4" />
-            Previous
+            <span className="hidden xs:inline">Previous</span>
           </Button>
           
           {currentStep < totalQuestions ? (
             <Button 
               onClick={handleNext}
               disabled={!selectedAnswer}
-              className="btn-teal gap-2"
+              className="btn-teal gap-1 sm:gap-2 text-sm sm:text-base"
             >
               Continue
               <ChevronRight className="w-4 h-4" />
@@ -187,7 +183,7 @@ const QuestionnaireForm = () => {
             <Button 
               onClick={calculateResults}
               disabled={!selectedAnswer || formSubmitted}
-              className="btn-gold gap-2"
+              className="btn-gold gap-1 sm:gap-2 text-sm sm:text-base"
             >
               <Sparkles className="w-4 h-4" />
               See My Results
@@ -197,7 +193,7 @@ const QuestionnaireForm = () => {
       </Card>
       
       {/* Encouraging Footer */}
-      <p className="text-center text-sm text-muted-foreground mt-6">
+      <p className="text-center text-xs sm:text-sm text-muted-foreground mt-4 sm:mt-6">
         Your answers help us understand your unique constitution
       </p>
     </div>
