@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Leaf, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import logoLight from "@/assets/logo-light.png";
 
 const Header = () => {
   return (
     <header className="border-b border-border/30 bg-background/70 backdrop-blur-md sticky top-0 z-50">
       <div className="ayur-container py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="p-1.5 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-            <Leaf className="w-5 h-5 text-accent transition-soft group-hover:rotate-12" />
-          </div>
-          <span className="font-cormorant text-2xl font-semibold text-foreground">
-            Ayur<span className="gradient-text-gold">Glow</span>
-          </span>
+        <Link to="/" className="flex items-center group">
+          <img 
+            src={logoLight} 
+            alt="Ayur Glow" 
+            className="h-12 w-auto transition-transform group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Navigation */}
