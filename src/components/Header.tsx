@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
-import logoLight from "@/assets/logo-light.png";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
       <div className="ayur-container py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center group">
           <img 
-            src={logoLight} 
+            src={logo} 
             alt="Ayur Glow" 
             className="h-12 w-auto transition-transform group-hover:scale-105"
           />
