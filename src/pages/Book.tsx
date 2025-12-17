@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import { Link } from "react-router-dom";
 
 const Book = () => {
-  const calendlyUrl = "https://calendly.com/ayurglow";
+  const calendlyUrl = "https://calendly.com/nish-shanika/ayur-glow";
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
