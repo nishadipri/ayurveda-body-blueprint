@@ -17,17 +17,20 @@ const EmailCollection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !email.includes('@')) {
+    // If email provided, validate it
+    if (email && !email.includes('@')) {
       toast({
         title: "Please enter a valid email",
-        description: "We need your email to send your personalized results.",
+        description: "Check your email format and try again.",
         variant: "destructive",
       });
       return;
     }
 
     setIsSubmitting(true);
-    localStorage.setItem('userEmail', email);
+    if (email) {
+      localStorage.setItem('userEmail', email);
+    }
     
     setTimeout(() => {
       toast({
@@ -64,7 +67,7 @@ const EmailCollection = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-base font-medium text-foreground">
-                      Where should we send your results?
+                      Want more health & wellness tips? Subscribe below (optional)
                     </Label>
                     <Input
                       id="email"
@@ -73,7 +76,6 @@ const EmailCollection = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="text-base py-6 rounded-xl border-border/50 focus:border-accent"
-                      required
                     />
                   </div>
                   
