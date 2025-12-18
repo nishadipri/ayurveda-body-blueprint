@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import DecorativeBackground from '@/components/DecorativeBackground';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { DoshaScore, calculateDoshaType, doshaDescriptions } from '@/utils/questionnaireData';
 import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip } from 'recharts';
 import { Sparkles, Heart, Leaf, Calendar, Wind, Flame, Droplets } from 'lucide-react';
@@ -13,10 +14,15 @@ const Results = () => {
   const navigate = useNavigate();
   
   const scores = location.state?.scores as DoshaScore | undefined;
+  const [showBookingModal, setShowBookingModal] = useState(false);
   
   useEffect(() => {
     if (!scores) {
       navigate('/email-collection');
+    } else {
+      // Show booking modal after a short delay when results load
+      const timer = setTimeout(() => setShowBookingModal(true), 1500);
+      return () => clearTimeout(timer);
     }
   }, [scores, navigate]);
   
@@ -67,6 +73,45 @@ const Results = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
+      
+      {/* Book a Call Popup Modal */}
+      <Dialog open={showBookingModal} onOpenChange={setShowBookingModal}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader className="text-center">
+            <div className="flex justify-center mb-4">
+              <div className="p-3 rounded-full bg-gradient-to-br from-accent/20 to-primary/20">
+                <Calendar className="w-8 h-8 text-accent" />
+              </div>
+            </div>
+            <DialogTitle className="font-cormorant text-2xl sm:text-3xl text-center">
+              Book a <span className="gradient-text-gold">Free Call</span> With Us
+            </DialogTitle>
+            <DialogDescription className="text-center text-muted-foreground pt-2">
+              A calm, friendly chat to explore your Dosha result and digestion. No pressure, just guidance.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-3 mt-4">
+            <Button 
+              className="btn-teal w-full"
+              onClick={() => {
+                setShowBookingModal(false);
+                navigate('/book');
+              }}
+            >
+              <Calendar className="w-4 h-4 mr-2" />
+              Yes, Book My Free Call
+            </Button>
+            <Button 
+              variant="ghost" 
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => setShowBookingModal(false)}
+            >
+              Maybe Later
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       <main className="flex-grow relative overflow-hidden">
         <DecorativeBackground variant="default" />
         
