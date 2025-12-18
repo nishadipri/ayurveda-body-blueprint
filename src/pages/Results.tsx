@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import DecorativeBackground from '@/components/DecorativeBackground';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { DoshaScore, calculateDoshaType, doshaDescriptions } from '@/utils/questionnaireData';
 import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip } from 'recharts';
-import { Mail, Sparkles, Heart, Leaf, Calendar, Check, Wind, Flame, Droplets } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { Sparkles, Heart, Leaf, Calendar, Wind, Flame, Droplets } from 'lucide-react';
 
 const Results = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { toast } = useToast();
-  const [email, setEmail] = useState('');
-  const [consent, setConsent] = useState(false);
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const scores = location.state?.scores as DoshaScore | undefined;
   
@@ -64,64 +55,6 @@ const Results = () => {
       );
     }
     return null;
-  };
-
-  const handleEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email) {
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      toast({
-        title: "Please enter a valid email",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!consent) {
-      toast({
-        title: "Please check the box to receive your result by email",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const doshaKey = dominantDosha.name.toLowerCase();
-      
-      const { data, error } = await supabase.functions.invoke('quiz-complete', {
-        body: {
-          email: email.trim().toLowerCase(),
-          consent: true,
-          dosha_result: doshaKey,
-          scores: scores,
-          source: 'results_page_email',
-        },
-      });
-
-      if (error) throw error;
-
-      setEmailSubmitted(true);
-      toast({
-        title: "Sent! ✉️",
-        description: "Check your inbox (or spam/promotions folder).",
-      });
-    } catch (error: any) {
-      console.error('Email send error:', error);
-      toast({
-        title: "Something went wrong",
-        description: "Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   const getDoshaIcon = (name: string) => {
@@ -282,65 +215,6 @@ const Results = () => {
               </CardContent>
             </Card>
             
-            {/* Optional Email Capture */}
-            {!emailSubmitted ? (
-              <Card className="mb-8 sm:mb-12 shadow-soft border-accent/20 bg-gradient-to-br from-card to-accent/5 animate-fade-in-up">
-                <CardContent className="p-5 sm:p-8 text-center">
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/10 mb-3 sm:mb-4">
-                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
-                  </div>
-                  <h3 className="font-cormorant text-xl sm:text-2xl font-medium mb-2 sm:mb-3">
-                    Send me a copy of my result
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 max-w-lg mx-auto leading-relaxed">
-                    Get your personalized dosha tips delivered to your inbox. <span className="text-primary font-medium">Optional</span> — continue without it.
-                  </p>
-                  <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
-                    <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                      <Input
-                        type="email"
-                        placeholder="Your email address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="flex-1 rounded-lg sm:rounded-xl border-border/50 focus:border-accent text-sm sm:text-base"
-                      />
-                      <Button 
-                        type="submit" 
-                        className="btn-gold whitespace-nowrap text-sm sm:text-base"
-                        disabled={isSubmitting || !email || !consent}
-                      >
-                        {isSubmitting ? 'Sending...' : 'Send'}
-                      </Button>
-                    </div>
-                    <div className="flex items-start gap-3 text-left">
-                      <Checkbox 
-                        id="consent" 
-                        checked={consent}
-                        onCheckedChange={(checked) => setConsent(checked as boolean)}
-                        className="mt-0.5"
-                      />
-                      <label htmlFor="consent" className="text-xs sm:text-sm text-muted-foreground cursor-pointer leading-relaxed">
-                        Yes, send my dosha result and tips to my email.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="mb-8 sm:mb-12 shadow-soft border-primary/20 bg-gradient-to-br from-card to-primary/5 animate-scale-in">
-                <CardContent className="p-5 sm:p-8 text-center">
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 mb-3 sm:mb-4">
-                    <Check className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                  </div>
-                  <h3 className="font-cormorant text-xl sm:text-2xl font-medium mb-2">
-                    Sent! ✉️
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground">
-                    Check your inbox (and spam/promotions folder).
-                  </p>
-                </CardContent>
-              </Card>
-            )}
 
             {/* Book a Call CTA */}
             <Card className="mb-8 sm:mb-12 shadow-soft border-primary/30 animate-fade-in-up">
